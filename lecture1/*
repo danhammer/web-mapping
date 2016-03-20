@@ -1,0 +1,185 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf350
+{\fonttbl\f0\fnil\fcharset0 Monaco;}
+{\colortbl;\red255\green255\blue255;}
+\margl1440\margr1440\vieww8420\viewh9720\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\ql\qnatural\pardirnatural
+
+\f0\fs24 \cf0 \
+Notes on New Hampshire Merging\
+Kyle Dropp \
+\
+Files:\
+``nh_geo.csv - Dimensions 327 by 24\
+This is the Census voting district file. \
+\
+``nh_steve.csv - Dimensions 323 by 152\
+This is the vote file. It contains returns from 2000 through 2008.\
+\
+``nh_geo_merge.csv - Dimensions 327 by 173\
+This is the Census voting district file with vote totals merged. \
+\
+\
+``nh_vote_merge.csv - Dimensions 323 by 172\
+This is the vote total file with Census VTDs merged. \
+\
+\
+Matching Summary:\
+The ``precinct08" variable in the vote file and the ``NAME10 variable in the Census voting district file are near perfect matches. \
+\
+We identified matches for nearly all precincts. Overall, 326 out of 327 rows in the Census VTD file were matched successfully with a 2008 voting precinct. In the voting file, 323 out of 323 vote precincts were matched successfully with a geographic identifier. \
+\
+\
+\
+Variable Names:\
+-nh\\_geo\\_id - row identifier from raw Census VTD file\
+-nh\\_vote\\_id - row identifier from raw vote total file\
+-VAP - Voting Age Population from Census FTP\
+-Pop100 - full population from Census FTP\
+\
+-County.x - county code\
+-precinct08 - precinct code\
+-STATEFP10 - state code from census\
+-COUNTYFP10 - county code from census\
+-VTDST10 - voting district code from census\
+-GEOID10 - geo identifier from census\
+-VTDI10 - voting code from census\
+-Name10 - voting district string\
+-Town - town name\
+-NameLSAD10 - voting district string, with ``voting district at end\
+-ALAND10 - land\
+-AWATER10 - water\
+-INTPLAT10 - latitude\
+-INTPTLON10 - longitude\
+-cong_district_06 - congressional district number\
+-usrep06_1_bradley_rep - 2006 House 1 Republican\
+-usrep06_1_sheaporter_dem - 2006 House 1 Democratic\
+-usrep06_1_writein - 2006 House 1 Write In\
+-usrep06_2_bass_rep - 2006 House 2 Republican\
+-usrep06_2_hodes_dem - 2006 House 2 Democratic\
+-usrep06_2_blevens_lib - 2006 House 2 Libertarian\
+-usrep06_2_writein - 2006 House 2 Writein         \
+-gov06_coburn_rep - 2006 Governor Republican\
+-gov06_lynch_dem - 2006 Governor Democratic\
+-gov06_writein - 2006 Governor Write In           \
+-ballots06_regular - 2006 Ballots Regular         \
+-ballots06_absentee - 2006 Ballots Absentee      \
+-ballots06_total - 2006 Ballots Total           \
+-rep_straight_06 - 2006 Republican straight ticket?\
+-dem_straight_06 - 2006 Democratic straight ticket?           -precinct 08 - precinct 2008 code           \
+-cong_dist08 - 2008 CD             \
+-pres_dem08 - 2008 Presidential Democratic                \
+-pres_rep08 - 2008 Presidential Republican               \
+-pres_tot08 - 2008 Presidential Total                \
+-usrep08_1_bradledy_rep - 2008 House 1 Rep   \
+-us_rep08_1_sheaporter_dem - 2008 House 1 Dem\
+-us_rep08_1_kingsbury_lib - 2008 House 1 Lib\
+-us_rep08_1_writein - 2008 House 1 Write In\
+-us_rep08_2_horn_rep - 2008 House 2 Rep\
+-us_rep08_2_hodes_dem - 2008 House 2 Dem\
+-us_rep08_2_lapointe_lib - 2008 House 2 Lib\
+-us_rep08_2_writein - 2008 House 2 Write In\
+-us_rvote_08 - 2008 Rep vote\
+-us_dvote_08 - 2008 Dem vote\
+-us_sen08_blevens_lib - 2008 Senate Lib\
+-gov_rvote_08 - 2008 Governor Republican\
+-gov_dvote_08 - 2008 Governor Democratic            \
+-gov08_newell_lib - 2008 Governor Libertarian          \
+-gov08_writein - 2008 Governor Write In            \
+-ballots08_regular - 2008 Regular Ballots         \
+-ballots08_absentee - 2008 Write In Ballots       \
+-ballots08_total - 2008 Total Ballots           \
+-precinct04 - 2004 Precinct Name               \
+-cong_district04 - 2004 CD           \
+-pres_rvote_04 - 2004 Presidential Republican            \
+-pres_dvote_04  - 2004 Presidential Democratic            \
+-pres04_nader_ind - 2004 Presidential Independent        \
+-gov_rvote_04 - 2004 Governor Republican              \
+-gov_dvote_04 - 2004 Governor Democratic            \
+-gov04_writein - 2004 Governor Write In            \
+-us_rvote_04 - House Republican              \
+-us_dvote_04 - House Democratic              \
+-ussen04_blevens_writein - 2004 Senate Write In \
+-ussen04_writein - 2004 Senate Write In         \
+-ballots04_regular - 2004 Regular Ballots        \
+-ballots04_absentee - 2004 Absentee Ballots       \
+-ballots04_total - 2004 Total Ballots          \
+-usrep04_1_bradley_rep - 2004 House 1 Republican     \
+-usrep04_1_nadeau_dem - 2004 House 1 Democratic     \
+-usrep04_1_writein - 2004 House 1 Write In       \
+-usrep04_2_bass_rep - 2004 House 2 Republican       \
+-usrep04_2_hodes_dem - 2004 House 2 Democratic      \
+-usrep04_2_kahn_lib - 2004 House 2 Libertarian      \
+-usrep04_2_writein - 2004 House 2 Write In        \
+-precinct02 - 2002 precinct name             \
+-cong_district02 - 2002 CD           \
+-usrep02_1_bradley_rep - 2002 House 1 Rep    \
+-usrep02_1_clark_dem  - 2002 House 1 Dem     \
+-usrep02_1_belforti_lib  - 2002 House 1 Lib  \
+-usrep02_1_writein  - 2002 House 1 Write In       \
+-usrep02_2_bass_rep - 2002 House 2 Rep       \
+-usrep02_2_swett_dem - 2002 House 2 Dem      \
+-usrep02_barbiarz_lib - 2002 House 2 Lib    \
+-usrep02_2_writein - 2002 House 2 Write In        \
+-gov02_benson_rep - 2002 Governor Rep        \
+-gov02_fernald_dem - 2002 Governor Dem         \
+-gov02_barbiarz_lib - 2002 Governor Lib     \
+-gov02_writein - 2002 Governor Write In           \
+-ussen02_sununu_rep  - 2002 Senate Rep     \
+-ussen02_shaheen_dem - 2002 Senate Dem      \
+-ussen02_blevens_lib - 2002 Senate Lib     \
+-ussen02_smith - 2002 Senate Smith        \
+-ussen02_writein  - 2002 Senate Write In        \
+-ballots02_regular - 2002 Regular Ballots         \
+-ballots02_absentee - 2002 Absentee Ballots       \
+-ballots02_total  - 2002 Total Ballots         \
+-precinct00   - 2000 precinct name        \
+-cong_district00 - 2000 CD          \
+-usrep00_1_sununu_rep  - 2000 House 1 Rep   \
+-usrep00_1_clark_dem   - 2000 House 1 Dem    \
+-usrep00_1_belforti_lib  - 2000 House 1 Lib \
+-usrep00_1_writein   - 2000 House 1 Write In      \
+-usrep00_2_bass_rep  - 2000 House 2 Rep     \
+-usrep00_2_brannen_dem   - 2000 House 2 Dem   \
+-usrep00_2_christeson_lib  - 2000 House 2 Lib\
+-usrep00_2_kendel_ci   - 2000 House 2 CI    \
+-usrep00_2_writein  - 2000 House 2 Write In      \
+-pres_rvote_00    - 2000 Presidential Republican         \
+-pres_dvote_00    - 2000 Presidential Democratic        \
+-pres00_browne_lib    - 2000 Presidential Libertarian\
+-pres00_nader_green   - 2000 presidential Green    \
+-pres00_phillkips_con  -2000 Presidential Con    \
+-pres00_buchanan_ind   -2000 Presidential Ind   \
+-gov_rvote_00    -2000 Governor Rep          \
+-gov_dvote_00     -2000 Governor Dem        \
+-gov00_brown_ind    -2000 Governor Independent       \
+-gov00_babiarz_lib  -2000 Governor Libertarian      \
+-gov00_writein      -2000 Governor Write In       \
+-ballots00_regular     -2000 Regular Ballots   \
+-ballots00_absentee    -2000 Absentee Ballots    \
+-ballots00_total       -2000 Total Ballots   \
+\
+The following is Democratic two party vote share for presidential, gubernatorial, senate and house votes in the state\
+             \
+-p_08                      \
+-p_04                     \
+-p_00                      \
+-g_08                     \
+-g_06                      \
+-g_04                     \
+-g_02                      \
+-g_00                     \
+-us_08                     \
+-us_04                    \
+-us_02                     \
+-uh_08                    \
+-uh_06                     \
+-uh_04                    \
+-uh_02                     \
+-uh_00           \
+         \
+-av - Average Democratic percent                        \
+-NDV - Normal Democratic vote                     \
+-NRV - Normal Republican vote                      \
+\
+\
+}
