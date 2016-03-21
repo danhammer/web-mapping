@@ -27,10 +27,6 @@ This lecture is a gentle introduction to CartoDB, a web mapping service that we 
 
 2. **Style the map**.  Use the "Torque Heat" option in the Vizualization Wizard.
 
-*Ultimately, your animated map should look something like this*:
-
-<iframe width="100%" height="600" src="https://documentation.cartodb.com/viz/d7604750-e203-11e4-94cd-0e018d66dc29/embed_map" frameborder="0" allowfullscreen></iframe>
-
 ## What do you want to learn?
 
 Here are a few options for the **methods**:
