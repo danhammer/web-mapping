@@ -16,9 +16,9 @@ This code repository serves as the course website for ENVM-680 Spring 2016, **We
 ----
 _This is a rough course outline that is subject to change as the semester advances.  The lectures and this sequence may be updated._
 
-1. **Basics and interoperability** (_March 23_)   Add and edit geometries on your maps, add custom basemaps to your account, map election results.  Map your excel data and sync it from your Dropbox, introductions to data filters, introductions to in-browser scripts.
+1. **Basics** (_March 23_)   Getting started with guided tutorials.  Create static and dynamic maps.  Introduction to in-browser SQL scripts. Logistics and planning.  
 
-2. **Spatiotemporal data** (_March 30_)   Begin using Torque to create animated maps in seconds, create a torque heatmap.  This lecture will show you how to download a temporal dataset, upload your dataset to CartoDB and turn your data into an animated heatmap using the CartoDB Wizard.
+2. **Spatiotemporal data** (_March 30_)   Begin using Torque to create animated maps in seconds, create a torque heatmap.  This lecture will show you how to download a temporal dataset, upload your dataset to CartoDB and turn your data into an animated heatmap using the CartoDB Wizard. Map your excel data and sync it from your Dropbox.
 
 3. **Shapefiles and layers, online** (_April 6_) Georeferencing on CartoDB, how to Import a Shapefile in CartoDB, adding custom infowindows to your maps, creating and managing multilayer maps. Using the visualization wizard to map points data, embed maps into your Wordpress.com blog, add CartoDB maps to Microsoft Sharepoint sites, add CartoDB maps to Tumblr, Customizing, sharing, and embedding your maps.
 
