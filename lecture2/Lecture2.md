@@ -131,7 +131,7 @@ https://danhammergenome.cartodb.com/api/v2/sql?q=SELECT stage, staname FROM real
     - Style and structure the information box with relevant information.
     - Create a text box that titles the map and another with a description and a rating for the difficulty of this assignment (1 easiest -- 10 hardest). 
     - Post this map.  Ensure that it is publicly viewable.
-
+2. Where were the five closest earthquakes to USF in the past 30 days?  Send a URL to return this information in JSON format.
 
 *Much of this lecture is graciously borrowed, stolen, or extended from the CartoDB map academy course.*
 
