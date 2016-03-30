@@ -29,6 +29,8 @@ This lecture is a gentle introduction to CartoDB, a web mapping service that we 
 
 ## What do you want to learn?
 
+The topic of web mapping is broad.  We will cover the core skills for functional competence.  These skills can be applied to a number of different topics with a variety of concentrations.  I want to ensure that this course is not only useful, but also interesting to the broadest set of students possible.  With that, consider the following topics and methods that we can ensure we touch in this course.  What would be most interesting?  What are your backgrounds?  How can web mapping be used to further your studies?
+
 Here are a few options for the **methods**:
 
 1. Spatial statistics

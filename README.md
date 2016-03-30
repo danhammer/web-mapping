@@ -4,7 +4,7 @@ This code repository serves as the course website for ENVM-680 Spring 2016, **We
 ----
 
 - **Course meeting**: Room HR104, Wednesdays 6:30pm PT - 9:30pm PT
-- **Instructor information**: Dan Hammer ([dan@sig-gis.com](mailto:dan@sig-gis.com)) Adjunct faculty, Department of Environmental Science
+- **Instructor information**: Dan Hammer ([dan@sig-gis.com](mailto:dan@sig-gis.com)) Adjunct professor, Department of Environmental Science
 - **Office hours**: By appointment
 - **Course texts**: There is no book required for this class. All course material is hosted online, mainly within this repository.
 - **Software**: The primary software is web-based and no license is required for course access.  Some courses will use Excel, just to demonstrate interoperability, but access to Excel is not required for the course.  The data files will be provided by the instructor.
@@ -16,7 +16,7 @@ This code repository serves as the course website for ENVM-680 Spring 2016, **We
 ----
 _This is a rough course outline that is subject to change as the semester advances.  The lectures and this sequence may be updated._
 
-1. **Basics** (_March 23_)   Getting started with guided tutorials.  Create static and dynamic maps.  Introduction to in-browser SQL scripts. Logistics and planning.  
+1. **Basics** (_March 23_)   Getting started with guided tutorials.  Create static and dynamic maps.  Introduction to in-browser SQL scripts.  Logistics and planning.  
 
 2. **Spatiotemporal data** (_March 30_)   Begin using Torque to create animated maps in seconds, create a torque heatmap.  This lecture will show you how to download a temporal dataset, upload your dataset to CartoDB and turn your data into an animated heatmap using the CartoDB Wizard. Map your excel data and sync it from your Dropbox.
 
