@@ -115,7 +115,7 @@ FROM
 ST_Distance(the_geom, CDB_LatLng(37.7833,-122.4167), true)
 ```
 
-- Note that you will have to save the result as a new data set in order to share a persistent map.  
+- What happens if you revert back to `realstx`?  When you publish a map, what will appear?
 
 ### SQL API, view in the browser
 - Install a JSON view plugin for your browser.  Search for "json plugin firefox" or whatever browser you use.
