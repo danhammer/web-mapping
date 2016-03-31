@@ -4,7 +4,7 @@ This code repository serves as the course website for ENVM-680 Spring 2016, **We
 ----
 
 - **Course meeting**: Room HR104, Wednesdays 6:30pm PT - 9:30pm PT
-- **Instructor information**: Dan Hammer ([dan@sig-gis.com](mailto:dan@sig-gis.com)) Adjunct professor, Department of Environmental Science
+- **Instructor information**: Dan Hammer ([dhammer@sig-gis.com](mailto:dhammer@sig@sig-gis.com)) Adjunct professor, Department of Environmental Science
 - **Office hours**: By appointment
 - **Course texts**: There is no book required for this class. All course material is hosted online, mainly within this repository.
 - **Software**: The primary software is web-based and no license is required for course access.  Some courses will use Excel, just to demonstrate interoperability, but access to Excel is not required for the course.  The data files will be provided by the instructor.
@@ -32,6 +32,19 @@ _This is a rough course outline that is subject to change as the semester advanc
 
 8. **Application: web map for GPS** (_May 11_) Toggle map view, visualizing and styling a GPS track, converting standard GPS file formats into line segments that can be manipulated within CartoDB.
 
+### People and interests
 
-
-
+- **Jacquie** climate change and energy usage
+- **Nate** rare plant mapping
+- **Liz** CalTrans accidents across the corridor, hotspots
+- **Crystal** air pollution modelling
+- **Danae** climate change mitigation through transport optimiziation
+- **Ruth** traffic optimization and mapping (Daylight savings time messing everything up)
+- **Cody** agriculture and pest detection, spread of invasive species
+- **Ana** climate change and emissions reductions, focusing on transport (EV, renewables)
+- **Jim** water quality and salmon spawning and migration, breeding
+- **Fernanda** remote sensing techniques, land cover change
+- **Esther** tools and techniques as applied to environmental related issues
+- **Amy** waste management issues, basic mapping skills
+- **Andrew** human health risk assessment; disease incidence based on proximity; central valley, kaiser
+- **Dan** natural capital, scaling environmental impact through greater information
