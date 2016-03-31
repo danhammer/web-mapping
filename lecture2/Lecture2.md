@@ -5,7 +5,7 @@ The objective of this lecture is to learn the basics of SQL (structured query la
 
 **The CartoDB editor simplifies the process of making web-based SQL queries to a PostgreSQL relational database, with the spatial database extender, PostGIS.**
 
-We will be working with the [USGS stream guage data](http://earthquake.usgs.gov/earthquakes/feed/v1.0/csv.php) in today's lecture.  
+We will be working with the [USGS stream guage data](http://waterdata.usgs.gov/nwis/rt) in today's lecture.  
 
 ### SQL basics
 
