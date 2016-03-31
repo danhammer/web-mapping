@@ -11,7 +11,7 @@ We will be working with the [USGS stream guage data](http://waterdata.usgs.gov/n
 
 - Connect the `realstx` dataset, *Realtime US streamflow stations*, which contains streamflow information of over 4,000 stream gage stations.  This is tagged with **Physical datasets**.  Click **New dataset** and search for a tag `:Physical` to find and connect the data.
 
-- Edit the metadata (which is mostly filled out) and set the refresh to **Every day*.  Copy the URL (with the embedded SQL query) above the timing radio buttons for future reference. 
+- Edit the metadata (which is mostly filled out) and set the refresh to **Every day**.  Copy the URL (with the embedded SQL query) above the timing radio buttons for future reference. 
 
 - Visit the [USGS page](http://waterdata.usgs.gov/nwis/rt) to get a sense of the variable meanings.  Specifically, what is a [percentile](http://help.waterdata.usgs.gov/faq/surface-water/what-is-a-percentile?searchterm=percentile)?  What is gage height, also known as [stage](http://help.waterdata.usgs.gov/faq/surface-water/how-to-interpret-gage-height-and-streamflow-values)?
 
