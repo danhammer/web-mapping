@@ -20,7 +20,7 @@ _This is a rough course outline that is subject to change as the semester advanc
 
 2. **SQL and APIs** (_March 30_)  Introduction to SQL scripts within the CartoDB editor.  Views onto synced tables for real-time maps of stream flow data.  Assignment 1 issued.
 
-3. **Shapefiles and layers, online** (_April 6_) Georeferencing on CartoDB, how to Import a Shapefile in CartoDB, adding custom infowindows to your maps, creating and managing multilayer maps. Using the visualization wizard to map points data, embed maps into your Wordpress.com blog, add CartoDB maps to Microsoft Sharepoint sites, add CartoDB maps to Tumblr, Customizing, sharing, and embedding your maps.
+3. **Multiple tables** (_April 6_) Find points within polygons and multipolygons from multiple tables. Intermediate SQL queries relying on PostGIS.  Assignment 2 issued.
 
 4. **Analysis** (_April 13_)  Creating a simple map of points, simple Category maps with icons, drawing a circle from a point and radius, counting points in polygons.
 
