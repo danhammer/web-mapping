@@ -85,10 +85,81 @@ First, we'll use the built-in, point-and-click merge for a *column join* to add 
 
 4. Select *Column join*.  Merge the `iso2` code from `world_borders` with `adm0_a3` from the populated places table.  
 
-5. Click *MERGE DATASETS*.  A new dataset is created and displayed in the Data View.  It is especially important to edit metadata after merges, given default table names.  What happened?
+5. Click *MERGE DATASETS*.  A new dataset is created and displayed in the Data View.  It is especially important to edit metadata after merges, given default table names.  What happened?  How many unique rows are in this dataset?  Note this number for later.
 
-Next, we will use a spatial join, where attributes are joined based on their location rather than the value of a specified variable.
+-----
+Next, we will use a spatial join, where attributes are joined based on their location rather than the value of a specified variable.  This se The selection of variables now determines the attributes in the merged data set.  Use the **Spatial join** option to answer these questions.  (There are other ways, which we'll get to.)
 
-1. 
+1. How many populated places are in Brazil?  
+2. Create a chloropleth map of the number of populated places for each country.  Adjust the infowindow to explore the number of populated places for all countries (not just Brazil).
+3. Assume that the `pop_max` is the population of the populated places (in 10s of people).  What is the average population of the populated places in Japan?
+4. What is the total 2005 world population?
+5. How many megacities are their in the United States?  In China? In Mexico?
+
+An unguided series of questions:
+
+1. How many airports are there in Argentina?  
+2. How many airports are there in countries with names that begin with the letter "B"?
+3. How many **major** airports are there in the United States?
+
+-----
+The CartoDB *Merges* queries rely on the SQL `JOIN` function. There are different types of `JOINs`:
+
+- `INNER JOIN`: Returns all rows when there is at least one match in BOTH tables
+- `LEFT JOIN`: Return all rows from the left table, and the matched rows from the right table
+- `RIGHT JOIN`: Return all rows from the right table, and the matched rows from the left table
+- `FULL JOIN`: Return all rows when there is a match in ONE of the tables
+
+The basic syntax for a `JOIN` follows.  Note that the variable and table names are made up.  You will have to change everything aside from the SQL operations and their order.  The objective is *just* to provide a template.
+
+```sql
+SELECT original.cartodb_id, original.the_geom, original.variable, target.variable
+FROM original
+INNER JOIN target
+ON original.idx=target.idx
+```
+
+1. Without relying on the point-and-click Merge option in CartoDB, merge the 2005 national population into the populated places data set. 
+```sql
+INSERT answer INTO here
+```
+
+Now, upload the Panama Papers data set.  This data set contains information on the number beneficiaries, clients, companies, and shareholders listed in the incriminating Panama Papers.  When you upload this information, CartoDB will try to intelligently geolocate the information.  We will ignore this, since it is imperfect.  We can do better with the raw SQL.  
+
+1. Connect the `panama_papers.csv` data set by first downloading the CSV from GitHub.
+2. Merge the `panama_papers` table with the `world_borders` table.  Be sure to include at least the `beneficiaries` variable from the `panama_papers` table.
+3. Create a map where each country is colored by the number of beneficiaries.  Be sure to specify the merge so that the geometry for each country is displayed, *even if there are no beneficiaries listed, i.e., null values.*
+```sql
+INSERT answer INTO here
+```
+1. Explore the difference between the different types of merges by counting the number of rows in the merge, without creating a new table for each new merged table.  This will require a **sub-query**.  You are, in effect, creating a table on the fly, and counting the rows from that. You will most likely encounter an error message that reads *subquery in FROM must have an alias*.  Think about this and fix the nested query.
+```sql
+INSERT answer INTO here
+```
+
+----
+
+Keep the table available.  We will now look at the `GROUP BY` clause to aggregate by certain values in the table.  Suppose, for example, you wanted to count the beneficiaries by region in the new, merged data set.  The template follows.
+
+```sql
+SELECT column1, column2
+FROM table_name
+WHERE [ conditions ]
+GROUP BY column1, column2
+ORDER BY column1, column2
+```
+1.  Now, you are allowed to create a new data set with the beneficiearies for each country.  
+2.  Use this new data set to count the number of beneficiaries by region.  Order by the number of beneficiaries, from most to least.
+
+*Note that you will ultimately need to use the `GROUP BY` clause to effectively do Question 3, Assignment 2.*
 
 #### Assignment 3
+
+1. Create a web map that shows the ratio of Panama Paper beneficiaries to regional airports *for each country*.
+2. Try to answer Question 3 of the previous assignment for just the first thousand entries.  Navigate to the lower east side.  The following SQL is a hint: the last few lines of the necessary query.
+```sql
+WHERE original.cartodb_id < 1000
+GROUP BY 
+original.cartodb_id,
+original.the_geom_webmercator
+```
