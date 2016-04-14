@@ -1,5 +1,10 @@
 The objective of this lecture is to review the SQL that we've learned already, adding in basic merge operations.  We will first use the *Merge with dataset* option from within the CartoDB editor and then layer in SQL queries for the instances when the point-and-click option fails.  First, however, we will review the previous assignments.  We will review the grading for [Assignment 1](https://github.com/danhammer/web-mapping/blob/master/lecture2/Lecture2.md#assignment) and the answers for [Assignment 2](https://github.com/danhammer/web-mapping/blob/master/lecture3/lecture3.md#assignment).
 
+A few motivating examples that are especially useful or attractive.
+1. [Flint lead testing results](http://michiganradio.org/post/map-take-closer-look-flint-lead-testing-results#stream/0)
+2. [United States population map](https://observatory.cartodb.com/viz/582f22f2-d682-11e5-a3bd-0ecfd53eb7d3/embed_map)
+3. [Bay Area car crashes](https://team.cartodb.com/u/mamataakella/viz/322d015a-e9fb-11e5-b482-0e31c9be1b51/embed_map)
+
 #### Assignment 1 grades
 
 Manily just dings.  Please be sure to follow instructions exactly.  And **really** make sure that the tables exist.  Out of 100, the current average is 90 with a standard deviation of 5 points (i.e., 66% of the class scored between 85-90 points).  If you would like to resubmit the assignment to *precisely* conform with the instructions, then I will readjust with a 50% penalty.  This means that most can be in A-range with readjustments.  Here are a few of the common mistakes:
@@ -156,9 +161,12 @@ ORDER BY column1, column2
 #### Assignment 3
 
 1. Create a web map that shows the ratio of Panama Paper beneficiaries to regional airports *for each country*.
-2. Try to answer Question 3 of the previous assignment for just the first thousand entries.  Navigate to the lower east side.  The following SQL is a hint: the last few lines of the necessary query.
+2. Try to answer Question 3 of the previous assignment for just the first thousand entries in the PLUTO data table (i.e., the records with a CartoDB ID less than 1000).  Navigate to the lower east side to create a web map, with each record colored by distance to public space.  I would encourage you to create two separate tables, one for each sample (the first 1000 records *and* the appropriate public spaces data table).  The following SQL is a hint: the last few lines of the necessary query.
 ```sql
-WHERE original.cartodb_id < 1000
+WHERE 
+original.cartodb_id < 1000
+AND
+original.cartodb_id < modified.cartodb_id
 GROUP BY 
 original.cartodb_id,
 original.the_geom_webmercator
