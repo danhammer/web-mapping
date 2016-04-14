@@ -1,6 +1,7 @@
 The objective of this lecture is to review the SQL that we've learned already, adding in basic merge operations.  We will first use the *Merge with dataset* option from within the CartoDB editor and then layer in SQL queries for the instances when the point-and-click option fails.  First, however, we will review the previous assignments.  We will review the grading for [Assignment 1](https://github.com/danhammer/web-mapping/blob/master/lecture2/Lecture2.md#assignment) and the answers for [Assignment 2](https://github.com/danhammer/web-mapping/blob/master/lecture3/lecture3.md#assignment).
 
 A few motivating examples that are especially useful or attractive.
+
 1. [Flint lead testing results](http://michiganradio.org/post/map-take-closer-look-flint-lead-testing-results#stream/0)
 2. [United States population map](https://observatory.cartodb.com/viz/582f22f2-d682-11e5-a3bd-0ecfd53eb7d3/embed_map)
 3. [Bay Area car crashes](https://team.cartodb.com/u/mamataakella/viz/322d015a-e9fb-11e5-b482-0e31c9be1b51/embed_map)
