@@ -24,13 +24,11 @@ _This is a rough course outline that is subject to change as the semester advanc
 
 4. **Analysis** (_April 13_)  Creating a simple map of points, simple Category maps with icons, drawing a circle from a point and radius, counting points in polygons.
 
-5. **Joining and labelling** (_April 20_) Merging data from two tables, join data from two tables using SQL, style maps based values in your table, Adding labels to polygons.
+5. **PostGIS fluency** (_April 20_) More practice with spatial transform operations, with environmental applications.
 
-6. **Open data imports and real-time data** (_April 27_) Importing OpenStreetMap Data, Export OpenStreetMap Data with Overpass Turbo Mobile data collection and visualization with Fulcrum and CartoDB, real-time map with CartoDB sync tables.
+**No class.** (_April 27_)
 
-7. **Projections** (_May 4_) Using SQL to Project Your Map Using Albers Projection, projections, the_geom and the_geom_webmercator, query by distance.
-
-8. **Application: web map for GPS** (_May 11_) Toggle map view, visualizing and styling a GPS track, converting standard GPS file formats into line segments that can be manipulated within CartoDB.
+7. **Styling maps and Open Street Map** (_May 4_) Import OSM data via the Overpass API and style maps based on table values.
 
 ### People and interests
 
