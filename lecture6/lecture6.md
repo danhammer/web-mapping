@@ -1,4 +1,5 @@
-The objective of this lecture-lab is to connect more data sets for the final project and to start to focus more on map design.
+
+The objective of this lecture-lab is to connect more data sets for the final project.  Additionally, we will begin to focus more on map design.  
 
 #### Assignment 4 answers
 
@@ -184,6 +185,8 @@ out skel qt;
 
 ##### Final project
 
-You should begin to work on your final projects.  At least review the available data.  There are some datasets that require you to contact a data administrator for access.  I am not sure how long this process takes, so if you are very excited about a particular dataset then start as early as possible.  Note that you are *not required* to use these datasets, or any specific dataset.  Also, please feel free to incorporate other, external data.  Just try to tie it to California, with some thematic focus on environment -- broadly defined.  This can include the usual suspects like water scarcity or biodiversity, but can range to waste management and transport (even transport safety).  
+You should begin to work on your final projects.  At least review the available data.  There are some datasets that require you to contact a data administrator for access.  I am not sure how long this process takes, so if you are very excited about a particular dataset then start as early as possible.  Note that you are *not required* to use these (restricted) datasets, or any specific dataset.  Also, please feel free to incorporate other, external data.  Just try to tie it to California, with some thematic focus on environment -- broadly defined.  This can include the usual suspects like water scarcity or biodiversity, but can range to waste management and transport (even transport safety).  
 
-If you end up using the project for work or other courses, please 
+If you end up using the project for work or other courses, please let me know.  I'd love to stay connected to your work.
+
+The final class will be Wednesday, May 11.  This class will include a short section on setting up a blog or simple website to share your web mapping work.  This should help with your final project.  If you are currently working on your project, then you can begin to think about uploading it to [Wix](http://www.wix.com/), [Squarespace](https://www.squarespace.com/), [Weebly](https://www.weebly.com/), or any other starter site creator.  All of these service have free tiers, which you can use to post and share your work.
