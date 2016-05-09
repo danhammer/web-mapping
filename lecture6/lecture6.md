@@ -95,7 +95,13 @@ FROM pumps
 - Navigate to the `cholera` data table and append the `pumps` table using the [`UNION`](http://www.w3schools.com/sql/sql_union.asp) operator.
 
 ```sql
-INSERT answer INTO here
+SELECT cartodb_id, the_geom_webmercator, count, 'cholera' as layer
+FROM cholera_deaths
+
+UNION ALL
+
+SELECT cartodb_id, the_geom_webmercator, NULL as count, 'pump' as layer
+FROM pumps
 ```
 
 - Ensure that the correct number of pumps and disease incidence are represented in the unioned data table, i.e., replicate the table below with a SQL query.
@@ -106,21 +112,31 @@ INSERT answer INTO here
 | pump    | 8     |
 
 ```sql
-INSERT answer INTO here
+SELECT layer, COUNT(*)
+FROM (
+    SELECT cartodb_id, the_geom_webmercator, count, 'cholera' as layer
+    FROM cholera_deaths
+
+    UNION ALL
+
+    SELECT cartodb_id, the_geom_webmercator, NULL as count, 'pump' as layer
+    FROM pumps
+  ) AS mytable
+GROUP BY layer
 ```
 
 - Add the following lines to the bottom of the CSS editor.  Manually adjust the missing values and play with them.  
 
 ```css
 #cholera_deaths [layer='pump'] {
-  marker-width: ...;
-  marker-fill: ...;
-  marker-line-color: ...;
-  marker-line-width: ...;
-  marker-opacity: ...;
+  marker-width: 15.0;
+  marker-fill: #3399FF;
+  marker-line-color: black;
+  marker-line-width: 0;
+  marker-opacity: 1;
   marker-placement: point;
   marker-type: ellipse;
-  marker-allow-overlap: ...;
+  marker-allow-overlap: true;
 }
 ```
 - How does this compare to adding the two separate layers?  Can you think of a previous example where having all the data in a single table with conditional CSS would have been helpful?
@@ -142,7 +158,7 @@ Data © [OpenStreetMap](http://www.openstreetmap.org/copyright) contributors
 - Delete all datasets aside from the multipolygons and rename this `osm`.  Create a data table with *only* the cartodb ID, the geometry, and the area of the geometry.  Note that you will have to calculate the area based on `the_geom::geography`.  Color the web map by `area` (which will be square feet).
 
 ```sql
-INSERT answer INTO here
+SELECT cartodb_id, the_geom, ST_AREA(the_geom::geography) FROM osm
 ```
 
 ##### Importing OSM data from Overpass Turbo
@@ -162,9 +178,6 @@ node
   [amenity=drinking_water]
   ({{bbox}});
 out;
-```
-```sql
-INSERT answer INTO here
 ```
 
 - Now consider building footprints.
