@@ -19,7 +19,7 @@ If the projector works, then I will walk through the setup steps with you at the
 - Change the title and the header image, which could be a (wide) screenshot of your favorite map.
 - Your final project can comprise a single blog post.  Delete the two unnecessary posts in the Food Blog template, and begin to edit the remaining blog post.
 - When you are ready to add a web map, click the *Insert HTML* button in the post editor, and copy-paste the **Embed It** tab under the CartoDB's **Publish** tab.
-- Finish a draft, adjust elements as needed, and when you're ready click **Publish** in the top right corner.  You will automatically get a basic URL.  You won't be able to change this too much, unless you purchase a Wix plan and get your own domain name.  Mine is here: [danhammer.wix.com/mysite](http://danhammer.wix.com/mysite).
+- Finish a draft, adjust elements as needed, and when you're ready click **Publish** in the top right corner.  You will automatically get a basic URL.  You won't be able to change this too much, unless you purchase a Wix plan and get your own domain name.  Mine is here: [danhammer.wix.com/web-mapping](http://danhammer.wix.com/web-mapping).
 
 This should give you a sufficient start to a website to share your work.  If you already have a web site up and running (and you are able to embed CartoDB maps) then you don't have to use Wix.  Use whatever works for you.  However, this is now a *requirement* for the final project.  
 
