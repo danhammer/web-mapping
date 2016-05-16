@@ -27,7 +27,7 @@ This should give you a sufficient start to a website to share your work.  If you
 
 The objective of this section is to continue to develop some fluency in SQL queries.  I derived this set of problems from a consulting arrangement that I have with the Tulare and Madera irrigation districts.  That is, this is a series of actual questions from the California State Water Resources Control Board.  
 
-- Connect the [county selection table](), derived from the US Counties data where `countyfp = '039'` and `countyfp = '107'`, and the California [groundwater basins table](https://danhammergenome.cartodb.com/tables/i08_b118_ca_groundwaterbasins).
+- Connect the [county selection table](https://danhammergenome.cartodb.com/tables/gsas), derived from the US Counties data where `countyfp = '039'` and `countyfp = '107'`, and the California [groundwater basins table](https://danhammergenome.cartodb.com/tables/i08_b118_ca_groundwaterbasins).
 
 - Create a map of the two counties, adapted to meet the following criteria.  When you are finished, save the data table from the appropriate query, called `gsas_union`.  
     - Dissolve the internal boundaries, i.e., only show the external boundaries of the two counties.  Use the [`ST_Union`](http://postgis.net/docs/ST_Union.html) function.
