@@ -1,4 +1,4 @@
-This code repository serves as the course website for ENVM-680 Spring 2016, **Web Mapping**.  The class will provide students with a working knowledge of web-based mapping for a range of applications, including mapping election results, animating the geographic spread of disease, and styling maps of socioeconomic data.  We will rely on the open-source [CartoDB](http://www.cartodb.com) platform.  Students will have the opportunity to create maps and learn about programmatic ways to query large-scale geospatial data, embed maps in blogs, and other modern techniques for analyzing and sharing geospatial information.  Opportunities for learning to program or extending the course will also be presented, although this portion is not a metric for in-class success.
+This code repository serves as the course website for ENVM-680 Spring 2017, **Web Mapping**.  The class will provide students with a working knowledge of web-based mapping for a range of applications, including mapping election results, animating the geographic spread of disease, and styling maps of environmental information.  We will rely on the open-source [Carto](http://www.carto.com) platform.  Students will have the opportunity to create maps and learn about programmatic ways to query large-scale geospatial data, embed maps in blogs, and other modern techniques for analyzing and sharing geospatial information.  
 
 #### Course information
 ----
@@ -26,23 +26,9 @@ _This is a rough course outline that is subject to change as the semester advanc
 
 5. **PostGIS fluency** (_April 20_) More practice with spatial transform operations, with environmental applications.
 
-**No class.** (_April 27_)
-
-7. **Styling maps and Open Street Map** (_May 4_) Import OSM data via the Overpass API and style maps based on table values.
+6. **Styling maps and Open Street Map** (_May 4_) Import OSM data via the Overpass API and style maps based on table values.
 
 ### People and interests
 
-- **Jacquie** climate change and energy usage
-- **Nate** rare plant mapping
-- **Liz** CalTrans accidents across the corridor, hotspots
-- **Crystal** air pollution modelling
-- **Danae** climate change mitigation through transport optimiziation
-- **Ruth** traffic optimization and mapping (Daylight savings time messing everything up)
-- **Cody** agriculture and pest detection, spread of invasive species
-- **Ana** climate change and emissions reductions, focusing on transport (EV, renewables)
-- **Jim** water quality and salmon spawning and migration, breeding
-- **Fernanda** remote sensing techniques, land cover change
-- **Esther** tools and techniques as applied to environmental related issues
-- **Amy** waste management issues, basic mapping skills
-- **Andrew** human health risk assessment; disease incidence based on proximity; central valley, kaiser
 - **Dan** natural capital, scaling environmental impact through greater information
+- ...
