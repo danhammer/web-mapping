@@ -1,9 +1,6 @@
+The objective of this lecture is to learn the basics of SQL (structured query language) through the Carto editor.  Carto is built on a database called PostgreSQL.  SQL is the languaged used to interact with the database, which is particularly well-suited for GIS because it is a *relational* database.  A relational database stores tabular data (rows and columns) with links or relations easily accessible.  This way, data can be accessed and reassembled without having to reorganize the stored tables.  There is a special database extender for PostgreSQL called PostGIS that makes it easier to make GIS-based queries to the vanilla relational database.  For example, the concept of *closeness* is a location-based relational query.  PostGIS adds support for geographic objects to allow for location queries.  PostGIS allows you to perform geospatial queries such as finding all data points that are within a given radius, the area of polygons in your table, and much more.
 
-
-
-The objective of this lecture is to learn the basics of SQL (structured query language) through the CartoDB editor.  CartoDB is built on a database called PostgreSQL.  SQL is the languaged used to interact with the database, which is particularly well-suited for GIS because it is a *relational* database.  A relational database stores tabular data (rows and columns) with links or relations easily accessible.  This way, data can be accessed and reassembled without having to reorganize the stored tables.  There is a special database extender for PostgreSQL called PostGIS that makes it easier to make GIS-based queries to the vanilla relational database.  For example, the concept of *closeness* is a location-based relational query.  PostGIS adds support for geographic objects to allow for location queries.  PostGIS allows you to perform geospatial queries such as finding all data points that are within a given radius, the area of polygons in your table, and much more.
-
-**The CartoDB editor simplifies the process of making web-based SQL queries to a PostgreSQL relational database, with the spatial database extender, PostGIS.**
+**The Carto editor simplifies the process of making web-based SQL queries to a PostgreSQL relational database, with the spatial database extender, PostGIS.**
 
 We will be working with the [USGS stream guage data](http://waterdata.usgs.gov/nwis/rt) in today's lecture.  
 
@@ -42,47 +39,37 @@ FROM realstx
 
 - Use the filter to start the SQL query to count the number of measurements (rows) that occurred between 1am UTC and 6am UTC today (March 30, 2016).  Ensure you conform to the [proper format](https://en.wikipedia.org/wiki/ISO_8601).  Rename the column view as `num_measurements`
 ```sql
-SELECT COUNT(*) AS num_measurements FROM realstx_copy 
-WHERE 
-(
-    time >= ('2016-03-30T01:00:00Z') 
-    AND 
-    time <= ('2016-03-30T06:00:00Z')
-)
+INSERT answer
 ```
 
 - How many watersheds are represented in the data (the variable `huc` is a watershed identifier)?  
     - Find out more information about this watershed by using the USGS link, swapping out the identifier at the apporpriate place in the URL: `http://water.usgs.gov/lookup/getwatershed?01010001`.
 
 ```sql
-SELECT COUNT(DISTINCT huc) FROM realstx_copy
+INSERT answer
 ```
 
 - Select all stations that contain the word `brook` in the name (`staname`).  Browse the table and then view the map.  What happens when you don't select all columns and attempt to map the database view?
 
 ```sql
-SELECT staname FROM realstx_copy WHERE staname ILIKE '%brook%'
+INSERT answer
 ```
 ```sql
-SELECT * FROM realstx_copy WHERE staname ILIKE '%brook%'
+INSERT answer
 ```
 
 - Visualize on a map the ten measurements with the highest gage height.  Which state contains the measurement with the *largest* gage height?
 
 ```sql
-SELECT *
-FROM realstx_copy
-ORDER BY stage DESC
-LIMIT 10
+INSERT answer
 ```
 
 ### the_geom
 
-Now that we have a handle on some basic SQL, we will shift our focus to two special columns in CartoDB. The first is `the_geom`, which is where some of your geospatial data is stored.  The second is `the_geom_webmercator` which contains all the same points that were in `the_geom`, but projected to Web Mercator, a web-optimized version of the historical Mercator projection. `the_geom_webmercator` is required by CartoDB to display information on your map. It is normally hidden from view because CartoDB updates it in the background so you can work purely in WGS84 (latitude and longitude).  What does this look like?
+Now that we have a handle on some basic SQL, we will shift our focus to two special columns in Carto. The first is `the_geom`, which is where some of your geospatial data is stored.  The second is `the_geom_webmercator` which contains all the same points that were in `the_geom`, but projected to Web Mercator, a web-optimized version of the historical Mercator projection. `the_geom_webmercator` is required by Carto to display information on your map. It is normally hidden from view because Carto updates it in the background so you can work purely in WGS84 (latitude and longitude).  What does this look like?
 
 ```sql
-SELECT cartodb_id, ST_AsText(the_geom_webmercator) AS the_geom_webmercator
-FROM realstx_copy
+INSERT answer
 ```
 
 As you can see, the values range from around -20 million meters to +20 million meters in both the N/S and E/W directions because the circumference of the earth is around 40 million meters. This projection takes the furthest North and South to be ± 85.0511°, which allows the earth to be projected as a large square, very convenient for using square tiles with on the web. It excludes the poles, so other projections will have to be used if your data requires them. 
@@ -99,14 +86,7 @@ PostGIS will return measurement in the same units as the input projection. Suppo
 You can measure distances (and make many other measurements in PostGIS) using meter units if you run the measurements with data on a spherical globe. That means we can exclude the first version of `ST_Distance()`. Instead, we need to project `the_geom` and our point to PostGIS geography type. We can do this by appending `::geography` to both of them in the function call, as below. Notice that we need to divide the value returned by `ST_Distance()` by 1000 to go from meters to kilometers.
 
 ```sql
-SELECT
-  *,
-  ST_Distance(
-    the_geom::geography, 
-    CDB_LatLng(37.7833,-122.4167)::geography
-  ) / 1000 AS dist
-FROM
-  realstx_copy
+INSERT answer
 ```
 
 - What happens when you do this?
@@ -121,7 +101,7 @@ ST_Distance(the_geom, CDB_LatLng(37.7833,-122.4167), true)
 - Install a JSON view plugin for your browser.  Search for "json plugin firefox" or whatever browser you use.
 
 ```bash
-https://danhammergenome.cartodb.com/api/v2/sql?q=SELECT stage, staname FROM realstx_copy ORDER BY stage DESC LIMIT 10
+https://danhammergenome.Carto.com/api/v2/sql?q=SELECT stage, staname FROM realstx_copy ORDER BY stage DESC LIMIT 10
 ```
 
 ## Assignment
@@ -133,5 +113,5 @@ https://danhammergenome.cartodb.com/api/v2/sql?q=SELECT stage, staname FROM real
     - Post this map.  Ensure that it is publicly viewable.
 2. Where were the five closest earthquakes to USF in the past 30 days?  Send a URL to return this information in JSON format.
 
-*Much of this lecture is graciously borrowed, stolen, or extended from the CartoDB map academy course.*
+*Much of this lecture is graciously borrowed, stolen, or extended from the Carto map academy course.*
 
