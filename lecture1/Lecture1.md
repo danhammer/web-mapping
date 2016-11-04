@@ -1,4 +1,4 @@
-This lecture is a gentle introduction to CartoDB, a web mapping service that we will rely on for this course.  We will first offer a few examples of what we can do with this web mapping platform, accessing the examples through this GitHub repository.  We will then focus on a particular application: mapping election results for New Hampshire.  Finally, we will discuss the interests of the class, both topical and methodological.  Web mapping is a broad topic which could encompass data science, programming, journalism, design, and many other disciplines across many different topic areas.  We will narrow in on the minimally sufficient set of topics to make the course as broadly interesting as possible.
+This lecture is a gentle introduction to Carto, a web mapping platform that we will rely on for this course.  We will first offer a few examples of what we can do with this web mapping platform, accessing the examples through this GitHub repository.  We will then focus on a particular application: mapping election results for New Hampshire.  Finally, we will discuss the interests of the class, both topical and methodological.  Web mapping is a broad topic which could encompass data science, programming, journalism, design, and many other disciplines across many different topic areas.  We will narrow in on the minimally sufficient set of topics to make the course as broadly interesting as possible.
 
 ## Interesting applications
 
@@ -15,7 +15,7 @@ This lecture is a gentle introduction to CartoDB, a web mapping service that we 
 
 1. **Get the data**.  Navigate to the [Harvard Election Data Archive](https://dataverse.harvard.edu/dataverse/eda) and download [`NH_Shapefile.zip`](https://dl.dropboxusercontent.com/u/5365589/NH_Shapefile.zip), also found [here](https://dataverse.harvard.edu/dataset.xhtml?persistentId=hdl:1902.1/16219).  Click the link and accept the terms of use to save it locally.  The compressed archive (the `.zip` file) has all of the geospatial and metadata associated with a shapefile.
 
-2. **Sign up for CartoDB**.  Navigate to [cartodb.com](www.cartodb.com).  Click `Sign Up`. (*Note: It may be worth investing in a password manager, like [1Password](https://agilebits.com/onepassword).*)
+2. **Sign up for CartoDB**.  Navigate to [carto.com](http://www.carto.com).  Click `Sign Up`. (*Note: It may be worth investing in a password manager, like [1Password](https://agilebits.com/onepassword).*)
 
 3. **Connect the dataset**.  Follow the instructions found [here](http://docs.cartodb.com/cartodb-editor/datasets/#connect-dataset) to connect the `NH_Shapefile.zip` dataset.
 
