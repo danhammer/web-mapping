@@ -35,4 +35,18 @@ _This is a rough course outline that is subject to change as the semester advanc
 ### People and interests
 
 - **Dan** natural capital, scaling environmental impact through greater information
-- ...
+- **Elden** Fish and Wildlife Service, remote sensing and 3D modeling, autonomous driving networks
+- **John** restoration ecology
+- **Holden** renewable energy, developing renewable energy infrastructure in CA, biofuel
+- **Emily** risk assessment of endocrine disruptors, water quality and pollutants
+- **Ethan** electric vehicle adoption, transportation.
+- **OJ** Nonprofits, environmental projects in collaboration with companies; sustainable mobility, traffic; 
+- **Bernadette** groundwater resource; groundwater vulnerability assessment in Salinas Valley
+- **Radhika** SERVIR Mekong, land use and land change; waste management, island nations
+- **Jeremy** charging stations, how accessible to amenities; distances between locations.
+- **Erin** solar company in oakland, solar system design; community solar and storage in hawaii. 
+- **Evan** forest quality for the America Pika persistence (like a hamster) which is sensitive to climate change.
+- **Cassie** air resources board, gis analysis of survey data for seasonal usage pattern of vehicles. Holes in CA smog check program.  
+- **Jeno** how mapping can be used for public policy.  Targeting voters for campaign.  Heat map.  
+- 
+
