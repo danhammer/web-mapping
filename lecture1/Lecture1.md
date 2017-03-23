@@ -6,7 +6,7 @@ This lecture is a gentle introduction to Carto, a web mapping platform that we w
 2. Philadelphia [bike crashes](http://azavea.cartodb.com/viz/16ea1d8e-2481-11e3-aabf-3085a9a956e8/embed_map) (2007-2012)
 3. New York City [median days on AirBnB to make rent](https://observatory.cartodb.com/viz/b2cb3416-dbdd-11e5-bbb3-0ea31932ec1d/embed_map), a reaggregation of [this other web map](http://insideairbnb.com/new-york-city/index.html) that relies on Mapbox and D3 (2015-2016)
 4. [Global Forest Watch](http://www.globalforestwatch.org) (2000-2015)
-5. [Global water detection](http://danhammer.github.io/water-test) and [crop detection](http://danhammer.github.io/crop-website) (1999-2014)
+5. [Global water detection](http://water.earthgenome.org) and [crop detection](http://danhammer.github.io/crop-website) (1999-2014)
 6. [Twitter reaction to Super Bowl](http://srogers.cartodb.com/viz/1b9b0670-8d15-11e3-8ddf-0edd25b1ac90/embed_map) (February 2, 2014)
 7. [Tweets mentioning "sunrise"](http://cartodb.s3.amazonaws.com/static_vizz/sunrise.html?title=true&description=true) (April 6, 2014)
 8. [Alcatraz escape](https://siggyf.cartodb.com/viz/a3f7aec6-788b-11e4-a565-0e853d047bba/embed_map) (June 11, 1962)
