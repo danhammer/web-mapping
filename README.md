@@ -4,7 +4,7 @@ This code repository serves as the course website for ENVM-680 Spring 2017, **We
 ----
 
 - **Course meeting**: Room HR104, Wednesdays 6:30pm PT - 9:30pm PT
-- **Instructor information**: Dan Hammer ([dan@earthgenome.org](mailto:dan@earthgenome.org)) Adjunct professor, Department of Environmental Science
+- **Instructor information**: Dan Hammer ([dan@earthgenome.org](mailto:dan@earthgenome.org)) Adjunct professor, Department of Environmental Science.  Zoom. 
 - **Office hours**: By appointment
 - **Course texts**: There is no book required for this class. All course material is hosted online, mainly within this repository.
 - **Software**: The primary software is web-based and no license is required for course access.  Some courses will use Excel, just to demonstrate interoperability, but access to Excel is not required for the course.  The data files will be provided by the instructor.
