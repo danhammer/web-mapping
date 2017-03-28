@@ -23,9 +23,13 @@ This lecture is a gentle introduction to Carto, a web mapping platform that we w
 
 ## Guided tutorial: get started with animated maps
 
-1. **Get the data**.  Download active fires from this repository, and add it to Carto as a dataset.  What is the date range of this dataset?  (Use the sorting options in the dataset view.)
+1. **Get the data**.  Download active fires from [this repository](https://github.com/danhammer/web-mapping/blob/master/lecture1/active_fires.csv), and add it to Carto as a dataset. Better yet, connect the dataset rather than uploading it from your computer.
 
-2. **Style the map**.  Select ANIMATED as the aggregation option and select Heatmap as the animated type.  We will review the additional options in class.
+2. **Examine the data**. What is the date range of this dataset? (Use the sorting options in the dataset view. We will write SQL queries later to directly answer this questions.) What is the geographic extent?
+
+3. **Create the map**. Click the `CREATE MAP` button.
+
+4. **Style the map**.  Select ANIMATED as the aggregation option for the active fires later, and then select Heatmap as the animated type.  Ensure that the animation occurs on the  We will review the additional options in class.
 
 
 ## Clean up
