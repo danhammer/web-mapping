@@ -21,11 +21,15 @@ This lecture is a gentle introduction to Carto, a web mapping platform that we w
 
 4. **Style the map**.  The objective is to communicate information that is distributed spatially.  How would we communicate the counties where Democrats constituted more than 50% of the vote in 2008?  What about those counties that are relatively small (with respect to land area)?  
 
-## Guided tutorial: get started with Torque
+## Guided tutorial: get started with animated maps
 
-1. **Get the data**.  Navigate to the FTC data hosted on CartoDB.  Download to your machine or just connect the data with the built-in **Create Map** button.  [Optional: Examine the data and even create the map with the API call.]
+1. **Get the data**.  Download active fires from this repository.  What is the date range of this data set?  (Use the sorting options in the dataset view.)
 
-2. **Style the map**.  Use the "Torque Heat" option in the Vizualization Wizard.
+2. **Style the map**.  Add the fires layer.
+
+## Clean up
+
+When you are finished, erase the datasets and maps.  We are using the trial version which has a 250MB storage limit.  You can delete the maps by deleting the datasets.  Click on the datasets at `<username>.carto.com/dashboard/datasets`.
 
 ## What do you want to learn?
 
