@@ -49,11 +49,12 @@ INSERT answer
 INSERT answer
 ```
 
-- Select all stations that contain the word `brook` in the name (`staname`).  Browse the table and then view the map.  What happens when you don't select all columns and attempt to map the database view?
+- Select all stations that contain the word `brook` in the name (`staname`).  (Hint: look into [pattern matching](https://www.postgresql.org/docs/7.3/static/functions-matching.html).)  Browse the table and then view the map.  What happens when you don't select all columns and attempt to map the database view?  First select just `staname` and then adjust the query to select all columns.
 
 ```sql
 INSERT answer
 ```
+
 ```sql
 INSERT answer
 ```
@@ -91,7 +92,7 @@ You can measure distances (and make many other measurements in PostGIS) using me
 INSERT answer
 ```
 
-- What happens when you do this?
+- What happens when you add the `true` parameter to the end of the distance calculation?  Consider the documentation found [here](http://postgis.net/docs/ST_Distance.html).  What are the units we are using?  How would this impact the `true` parameter?
 
 ```sql
 ST_Distance(the_geom, CDB_LatLng(37.7833,-122.4167), true)
