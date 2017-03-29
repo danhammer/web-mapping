@@ -8,12 +8,12 @@ We will be working with the [USGS stream guage data](http://waterdata.usgs.gov/n
 
 - Connect the `realstx` dataset, *Realtime US streamflow stations*, which contains streamflow information of over 4,000 stream gage stations.  This is tagged with **Physical datasets**.  Click **New dataset** and search for a tag `:Physical` to find and connect the data.
 
-- Edit the metadata (which is mostly filled out) and set the refresh to **Every day**.  Copy the URL (with the embedded SQL query) above the timing radio buttons for future reference. 
+- Edit the metadata (which is mostly filled out) and set the refresh to **Every month**. More regular updates are only available with paid plans. Examine the URL (with the embedded SQL query) above the timing radio buttons. Copy and paste it into a new browser tab. What happens?  Can you change a parameter in the URL and get a different file format to download from the browser?
 
 - Visit the [USGS page](http://waterdata.usgs.gov/nwis/rt) to get a sense of the variable meanings.  Specifically, what is a [percentile](http://help.waterdata.usgs.gov/faq/surface-water/what-is-a-percentile?searchterm=percentile)?  What is gage height, also known as [stage](http://help.waterdata.usgs.gov/faq/surface-water/how-to-interpret-gage-height-and-streamflow-values)?
 
-- View just a few, select columns from the table.  
-    - What is the default?  
+- View just a few, select columns from the table.  You can toggle between the `Metadata` and `SQL` view at the bottom of the dataset screen.
+    - What is the default query?  What is shown with the defaul query?  
     - Try to **Apply query** with the keyboard shortcuts: `CMD+S` for Mac or `CTRL+S` for PC (basically *saving* the view).  
     - What happens when you clear the view?  
     - Why do you think its called a "view"?
@@ -101,7 +101,7 @@ ST_Distance(the_geom, CDB_LatLng(37.7833,-122.4167), true)
 - Install a JSON view plugin for your browser.  Search for "json plugin firefox" or whatever browser you use.
 
 ```bash
-https://danhammergenome.Carto.com/api/v2/sql?q=SELECT stage, staname FROM realstx_copy ORDER BY stage DESC LIMIT 10
+https://dangeorge.carto.com/api/v2/sql?q=SELECT stage, staname FROM realstx_copy ORDER BY stage DESC LIMIT 10
 ```
 
 ## Assignment
