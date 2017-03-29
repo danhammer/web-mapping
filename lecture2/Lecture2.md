@@ -43,7 +43,7 @@ INSERT answer INTO here
 - Use the filter to start the SQL query to count the number of measurements (rows) that occurred between 1am UTC and 6am UTC today (March 30, 2016).  Ensure you conform to the [proper format](https://en.wikipedia.org/wiki/ISO_8601).  Rename the column view as `num_measurements`
 
 ```sql
-INSERT answer
+INSERT answer INTO here
 ```
 
 - How many watersheds are represented in the data (the variable `huc` is a watershed identifier)?  
@@ -51,23 +51,23 @@ INSERT answer
     - Find out more information about this watershed by using the USGS link, swapping out the identifier at the apporpriate place in the URL: `http://water.usgs.gov/lookup/getwatershed?01010001`.
 
 ```sql
-INSERT answer
+INSERT answer INTO here
 ```
 
 - Select all stations that contain the word `brook` in the name (`staname`).  (Hint: look into [pattern matching](https://www.postgresql.org/docs/7.3/static/functions-matching.html).)  Browse the table and then view the map.  What happens when you don't select all columns and attempt to map the database view?  First select just `staname` and then adjust the query to select all columns.
 
 ```sql
-INSERT answer
+INSERT answer INTO here
 ```
 
 ```sql
-INSERT answer
+INSERT answer INTO here
 ```
 
 - Visualize on a map the ten measurements with the highest gage height.  Which state contains the measurement with the *largest* gage height?
 
 ```sql
-INSERT answer
+INSERT answer INTO here
 ```
 
 ### the_geom
@@ -77,7 +77,7 @@ Now that we have a handle on some basic SQL, we will shift our focus to two spec
 What does `the_geom_webmercator` look like?  Let's try to figure this out.  Use the `ST_AsText()` command and note that, strangely, the column `the_geom_webmercator` exists even though you can't see it.
 
 ```sql
-INSERT answer
+INSERT answer INTO here
 ```
 
 As you can see, the values range from around -20 million meters to +20 million meters in both the N/S and E/W directions because the circumference of the earth is around 40 million meters. This projection takes the furthest North and South to be ± 85.0511°, which allows the earth to be projected as a large square, very convenient for using square tiles with on the web. It excludes the poles, so other projections will have to be used if your data requires them. 
@@ -94,7 +94,7 @@ PostGIS will return measurement in the same units as the input projection. Suppo
 You can measure distances (and make many other measurements in PostGIS) using meter units if you run the measurements with data on a spherical globe. That means we can exclude the first version of `ST_Distance()`. Instead, we need to project `the_geom` and our point to PostGIS geography type. We can do this by appending `::geography` to both of them in the function call, as below. Notice that we need to divide the value returned by `ST_Distance()` by 1000 to go from meters to kilometers.
 
 ```sql
-INSERT answer
+INSERT answer INTO here
 ```
 
 - What happens when you add the `true` parameter to the end of the distance calculation?  Consider the documentation found [here](http://postgis.net/docs/ST_Distance.html).  What are the units we are using?  How would this impact the `true` parameter?
