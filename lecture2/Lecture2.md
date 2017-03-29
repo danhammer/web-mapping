@@ -19,30 +19,35 @@ We will be working with the [USGS stream guage data](http://waterdata.usgs.gov/n
     - Why do you think its called a "view"?
 
 ```sql
-SELECT the_geom, percentile, stage
-FROM realstx
+INSERT answer INTO here
 ```
 
-- Rename the `stage` variable.  Why might this be useful?
+- Rename the `stage` variable with a SQL query, on the fly.  Why might this be useful?
 
 ```sql
-SELECT stage AS gage_height
-FROM realstx
+INSERT answer INTO here
 ```
 
 - Copy the dataset so that we can edit the datatypes.  This can be done using the prompts next to the name of the data table. Change the data types for `time` from `string` to `date`.
- - Create a map from the copied dataset.
- - Within the map view, add a widget for `percentile`.  What is the average `percentile`?
- - Using only widgets, roughly how many rows have `percentile` values between 0 and 60?  What is the null value for `percentile`?  How might this impact our estimates of the average? 
- - What is the SQL query associated with this filter (`percentile` between 0 and 60)?
- - What is the range of values for `floodstage`? 
+
+- Create a map from the copied dataset.
+
+- Within the map view, add a widget for `percentile`.  What is the average `percentile`?
+
+- Using only widgets, roughly how many rows have `percentile` values between 0 and 60?  What is the null value for `percentile`?  How might this impact our estimates of the average? 
+
+- What is the SQL query associated with this filter (`percentile` between 0 and 60)?
+
+- What is the range of values for `floodstage`? 
 
 - Use the filter to start the SQL query to count the number of measurements (rows) that occurred between 1am UTC and 6am UTC today (March 30, 2016).  Ensure you conform to the [proper format](https://en.wikipedia.org/wiki/ISO_8601).  Rename the column view as `num_measurements`
+
 ```sql
 INSERT answer
 ```
 
 - How many watersheds are represented in the data (the variable `huc` is a watershed identifier)?  
+
     - Find out more information about this watershed by using the USGS link, swapping out the identifier at the apporpriate place in the URL: `http://water.usgs.gov/lookup/getwatershed?01010001`.
 
 ```sql
