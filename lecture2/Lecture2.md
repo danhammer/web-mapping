@@ -30,11 +30,11 @@ SELECT stage AS gage_height
 FROM realstx
 ```
 
-- Copy the dataset so that we can edit.  (Note that stitching together the real time datasets and the edited datasets must be done through additional code.)  
-    - change the data types for `time` from `string` to `date`.
-
-- Adjust the filters based on `percentile` and `stage`.  
- - What is the SQL query associated with the combined filter?
+- Copy the dataset so that we can edit the datatypes.  This can be done using the prompts next to the name of the data table. Change the data types for `time` from `string` to `date`.
+ - Create a map from the copied dataset.
+ - Within the map view, add a widget for `percentile`.  What is the average `percentile`?
+ - Using only widgets, roughly how many rows have `percentile` values between 0 and 60?  What is the null value for `percentile`?  How might this impact our estimates of the average? 
+ - What is the SQL query associated with this filter (`percentile` between 0 and 60)?
  - What is the range of values for `floodstage`? 
 
 - Use the filter to start the SQL query to count the number of measurements (rows) that occurred between 1am UTC and 6am UTC today (March 30, 2016).  Ensure you conform to the [proper format](https://en.wikipedia.org/wiki/ISO_8601).  Rename the column view as `num_measurements`
