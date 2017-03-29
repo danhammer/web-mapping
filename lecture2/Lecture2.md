@@ -66,7 +66,9 @@ INSERT answer
 
 ### the_geom
 
-Now that we have a handle on some basic SQL, we will shift our focus to two special columns in Carto. The first is `the_geom`, which is where some of your geospatial data is stored.  The second is `the_geom_webmercator` which contains all the same points that were in `the_geom`, but projected to Web Mercator, a web-optimized version of the historical Mercator projection. `the_geom_webmercator` is required by Carto to display information on your map. It is normally hidden from view because Carto updates it in the background so you can work purely in WGS84 (latitude and longitude).  What does this look like?
+Now that we have a handle on some basic SQL, we will shift our focus to two special columns in Carto. The first is `the_geom`, which is where some of your geospatial data is stored.  The second is `the_geom_webmercator` which contains all the same points that were in `the_geom`, but projected to Web Mercator, a web-optimized version of the historical Mercator projection. `the_geom_webmercator` is required by Carto to display information on your map. It is normally hidden from view because Carto updates it in the background so you can work purely in WGS84 (latitude and longitude).  
+
+What does `the_geom_webmercator` look like?  Let's try to figure this out.  Use the `ST_AsText()` command and note that, strangely, the column `the_geom_webmercator` exists even though you can't see it.
 
 ```sql
 INSERT answer
