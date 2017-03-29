@@ -115,10 +115,12 @@ https://dangeorge.carto.com/api/v2/sql?q=SELECT stage, staname FROM realstx_copy
 ## Assignment
 
 1. Create a map of earthquakes in the United States over the past 30 days, using the [USGS earthquake data](http://earthquake.usgs.gov/earthquakes/feed/v1.0/csv.php).  Note that the objective is to communicate the spatial information, so think carefully about the design considerations.
+
     - Color the earthquake points based on distance from USF's campus.  Please think about the colors and number of bins that would make it easy to read the map. 
     - Style and structure the information box with relevant information.
     - Create a text box that titles the map and another with a description and a rating for the difficulty of this assignment (1 easiest -- 10 hardest). 
     - Post this map.  Ensure that it is publicly viewable.
+
 2. Where were the five closest earthquakes to USF in the past 30 days?  Send a URL to return this information in JSON format.
 
 *Much of this lecture is graciously borrowed, stolen, or extended from the Carto map academy course.*
