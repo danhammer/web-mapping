@@ -20,16 +20,7 @@ INSERT answer INTO here
 - The first trick is using *two* tables in one query.  Both tables have to exist on your CartoDB account.  Finish the query below to include **only** USGS earthquakes within the United States (and then North America):
 
 ```sql
-SELECT  
-    points.the_geom_webmercator
-FROM
-    all_day as points, world_borders_hd as polygons
-WHERE 
-    polygons.adm0_a3 = 'USA'
-AND
-    ST_Contains(
-        polygons.the_geom, points.the_geom
-    )
+INSERT answer INTO here
 ```
 
 - Experiment with your query.  Rename variables and try to get the same answer.
@@ -38,69 +29,29 @@ AND
 
 - Import the world airports dataset `ne_10m_airports` tagged as `:Cultural`.  How many airports are in this dataset?  Count using SQL.  Don't add this as a layer yet; remain in the dataset view for the airports data table.
 ```sql
-SELECT COUNT(*) AS num_airports
+INSERT answer INTO here
 ```
 
 - Find all airports that experienced an earthquake within 50 miles in the past day (read: whatever is in the `all_day` dataset).  Use the `ST_DWithin` relationship.  Note that the function requires the distance in meters, so you'll have to use `50 * 1609` as the distance argument (i.e., the number of meters in 50 miles).  Also, remember to use `the_geom_webmercator` to optimize the query.
 ```sql
-SELECT
-  airports.*
-FROM
-  ne_10m_airports AS airports, 
-  all_day AS earthquakes
-WHERE
-  ST_DWithin(
-    airports.the_geom_webmercator,
-    earthquakes.the_geom_webmercator,
-    50*1609
-  )
+INSERT answer INTO here
 ```
 
 - Create a URL that displays **only the number of airports** in JSON.
 ```sql
-SELECT
-  COUNT(*) as at_risk_airports
-FROM
-  ne_10m_airports AS airports, 
-  all_day AS earthquakes
-WHERE
-  ST_DWithin(
-    airports.the_geom_webmercator,
-    earthquakes.the_geom_webmercator,
-    50*1609
-  )
+INSERT answer INTO here
 ```
 
 - Now we can work on the visualization.  Create a map from the airports full data set.  Add the earthquakes layer.  Use [`ST_Buffer`](http://www.postgis.org/docs/ST_Buffer.html) to visualize the "danger zone" of 50 miles around airports. *Note that the buffer `ST_Buffer` will only be **visualized** in the Map view, but it will be available for analysis in the Dataset view.*
 ```sql
-SELECT
-    ST_Buffer(
-      the_geom_webmercator,
-      50*1609
-    ) As the_geom_webmercator,
-  cartodb_id
-FROM
-  ne_10m_airports
+INSERT answer INTO here
 ```
 
 - Create a map that displays the 50 mile buffer around the airports that suffered a "close" earthquake, along with the earthquakes inside the buffer.  No need to restrict to the US or North America.  Style the map to show the magnitude of the earthquakes.  This is hard.  A straightforward method is to employ two separate queries, one to each layer.
 
 - What is an alternative to the query that relies on `ST_DWithin`?  Adjust the query to replicate the results using `ST_Buffer` and `ST_Contains`.  This is also hard.
 ```sql
-SELECT
-  airports.the_geom_webmercator,
-  airports.cartodb_id
-FROM
-  ne_10m_airports AS airports, 
-  all_day AS earthquakes
-WHERE
-ST_Intersects(
-  ST_Buffer(
-    airports.the_geom_webmercator,
-    50*1609
-  ),
-  earthquakes.the_geom_webmercator
-)
+INSERT answer INTO here
 ```
 
 #### Data science: tweets in San Francisco
@@ -114,43 +65,12 @@ Now answer a question that borders on data science.  The insights from this smal
 
 - Count the number of tweets about weather in San Francisco for both the rainy and sunny days.  *Note: ensure that you use `the_geom_webmercator` to ensure that the points and polygons equivalently projected.*
 ```sql
-SELECT  
-    sun.the_geom_webmercator,
-    sun.the_geom,
-    sun.cartodb_id,
-    sun.body
-FROM
-    twitter_weather_sun AS sun,
-    sf_building_footprints AS buildings,
-    sf_planning_neighborhoods AS city
-WHERE
-    ST_Contains(
-        city.the_geom_webmercator, 
-        sun.the_geom_webmercator
-    )
+INSERT answer INTO here
 ```
 
 - Count the number of tweets in San Francisco that were posted inside a building on both rainy and sunny days.
 ```sql
-SELECT  
-    sun.the_geom_webmercator,
-    sun.the_geom,
-    sun.cartodb_id,
-    sun.body
-FROM
-    twitter_weather_sun AS sun,
-    sf_building_footprints AS buildings,
-    sf_planning_neighborhoods AS city
-WHERE
-    ST_Contains(
-        city.the_geom_webmercator, 
-        sun.the_geom_webmercator
-    )
-AND
-    ST_Contains(
-        buildings.the_geom_webmercator, 
-        sun.the_geom_webmercator
-    )
+INSERT answer INTO here
 ```
 
 - Create two API calls for the rainy day, the URLs, with just the count of tweets (1) inside buildings, and (2) the total for San Francisco.
