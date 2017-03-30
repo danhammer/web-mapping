@@ -22,13 +22,13 @@ We will be working with the [USGS stream guage data](http://waterdata.usgs.gov/n
 INSERT answer INTO here
 ```
 
+- Copy the dataset so that we can edit the datatypes.  This can be done using the prompts next to the name of the data table. Change the data types for `time` from `string` to `date`.
+
 - Rename the `stage` variable with a SQL query, on the fly.  Why might this be useful?
 
 ```sql
 INSERT answer INTO here
 ```
-
-- Copy the dataset so that we can edit the datatypes.  This can be done using the prompts next to the name of the data table. Change the data types for `time` from `string` to `date`.
 
 - Create a map from the copied dataset.
 
