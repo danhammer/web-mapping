@@ -4,9 +4,9 @@ We will review and extend our fluency in SQL. First, we will use the readily ava
 
 Suppose, first, that we want to filter our data based on data from *two separate tables* with possibly *two separate geometry types*.  For example, how do we filter the USGS earthquakes for *just* those within the United States (as opposed to just zooming into the US for the assignment)?
 
-- Connect the near real-time USGS earthquake data through the Data Library.  The table name is `all_day` and the tag is `:Physical`.  The variable names (should) match the headers for Assignment 1.
+- Connect the near real-time USGS earthquake data through the Data Library. (Search for `earthquakes` and you'll see one matching result.) The table name is `all_day`. The variable names should, roughly, match the columns in Assignment 1.
 
-- Connect the world map of borders, also through the Data Library.  You can use the low- or high-resolution option: `World borders` or `world_borders_hd`, respectively.  Both are tagged with `:Administrative`.
+- Return to your Datasets pane and connect the world map of borders, also through the Data Library.  The low-resolution option is sufficient.
 
 - Add the boundary layer to the earthquake map. Filter the boundaries to *only* show (1) the United States and (2) North America. Note that SQL strings **must** use single-quotes, not double-quotes, e.g., `'USA'` not `"USA"`.  Hint: for one country you can use the `=` operator, but for multiple countries you must use [`IN`](http://www.w3schools.com/sql/sql_in.asp).
 ```sql
