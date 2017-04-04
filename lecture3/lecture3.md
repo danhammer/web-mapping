@@ -1,29 +1,47 @@
 We will review and extend our fluency in SQL. First, we will use the readily available data through the data library, and then, second, we will incorporate external data sources.
 
-#### Earthquakes
+#### Filter values based on a separate table
 
-Suppose, first, that we want to filter our data based on data from *two separate tables* with possibly *two separate geometry types*.  For example, how do we filter the USGS earthquakes for *just* those within the United States (as opposed to just zooming into the US for the assignment)?
+Suppose that we want to filter our data based on data from *two separate tables* with possibly *two separate geometry types*.  For example, how do we filter the USGS earthquakes for *just* those within the United States (as opposed to just zooming into the US for the assignment)?  This section will progressively write a query to select points within a polygon.
 
-- Connect the near real-time USGS earthquake data through the Data Library. (Search for `earthquakes` and you'll see one matching result.) The table name is `all_day`. The variable names should, roughly, match the columns in Assignment 1.
+- Connect the world map of borders through the Data Library. Search for "borders" and you should see two options for world borders. The low-resolution option is sufficient.
 
-- Return to your Datasets pane and connect the world map of borders, also through the Data Library.  The low-resolution option is sufficient.
+- Return to your Datasets pane and connect the near real-time USGS earthquake data through the Data Library. (Search for `earthquakes` and you'll see one matching result.) The table name is `all_day`. The variable names should, roughly, match the columns in Assignment 1.
 
-- Add the boundary layer to the earthquake map. Filter the boundaries to *only* show (1) the United States and (2) North America. Note that SQL strings **must** use single-quotes, not double-quotes, e.g., `'USA'` not `"USA"`.  Hint: for one country you can use the `=` operator, but for multiple countries you must use [`IN`](http://www.w3schools.com/sql/sql_in.asp).
+- Filter the earthquakes in `all_day` to just those within the United States.  
+  - We need to refer to two tables in the same query. Experiment with the following two queries. What do they do?
+  ```sql
+  SELECT
+    points.*
+  FROM 
+    all_day as points, world_borders as polygons
+  ```
+  ```sql
+  SELECT
+    polygons.*
+  FROM 
+    all_day as points, world_borders as polygons
+  ```
+  - We are only interested in the geometries in the `polygons` layer, where `name = 'United States'`.  Without a proper prefix, however, the column `name` may be ambiguous.
+  ```sql
+  WHERE
+    polygons.name = 'United States'
+  ```
+  - Finally, we need only the `points` that are contained in the new polygon layer -- with a single geometry of the United States.  For this, we use the PostGIS function [`ST_Contains`](http://postgis.net/docs/manual-1.4/ST_Contains.html).  What happens if you reverse the arguments inside `ST_Contains()`.
+  ```sql
+  AND
+    ST_Contains(
+      polygons.the_geom, points.the_geom
+    )
+  ```
+  - Assemble the previous components into a single query and preview the query result.  You don't need to create a map. 
+
+- Note that adding conditions or analysis to the query is pretty easy.  The fixed, up-front process of writing the query is tough.  Add a line to show only those earthquakes with a magnitute greater than 2.0.
 ```sql
 INSERT answer INTO here
 ```
 
-- There is no interaction between points and polygons at this point.  The visualizations are combined, but not the data.  We are going to create that interaction through the SQL editor. Before proceeding, however, style the points and polygons so that they look like a single map: don't let one geometry dominate the other.
-
-- Consider the `ST_Contains` relationship from PostGIS.  Why is it in PostGIS documentation rather than the standard SQL documentation, like [`IN`](http://www.w3schools.com/sql/sql_in.asp)? 
-
-- The first trick is using *two* tables in one query.  Both tables have to exist on your CartoDB account.  Finish the query below to include **only** USGS earthquakes within the United States (and then North America):
-
-```sql
-INSERT answer INTO here
-```
-
-- Experiment with your query.  Rename variables and try to get the same answer.
+- Another question: Why is it in PostGIS documentation rather than the standard SQL documentation, like [`IN`](http://www.w3schools.com/sql/sql_in.asp)? 
 
 ***
 
