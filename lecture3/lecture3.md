@@ -41,7 +41,7 @@ Suppose that we want to filter our data based on data from *two separate tables*
 INSERT answer INTO here
 ```
 
-- Another question: Why is it in PostGIS documentation rather than the standard SQL documentation, like [`IN`](http://www.w3schools.com/sql/sql_in.asp)? 
+- Another question: Why is [`ST_Contains`](http://postgis.net/docs/manual-1.4/ST_Contains.html) in the PostGIS documentation rather than the standard SQL documentation, like [`IN`](http://www.w3schools.com/sql/sql_in.asp)? 
 
 ***
 
