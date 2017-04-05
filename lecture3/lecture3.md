@@ -31,7 +31,7 @@ https://dangeorge.cartodb.com/api/v2/sql?q=SELECT%20mag,%20latitude,%20longitude
 
 ***
 
-#### Sign up for student 
+#### Sign up for student account
 
 We will need to sign up for Student Developer Packs in order to make use of some of the Carto features in the paid plans.  You will have to sign up for a GitHub handle. Then, go to [this link](https://education.github.com/pack) and enter your information. 
 
