@@ -154,10 +154,25 @@ INSERT answer INTO here
 #### Assignment
 
 Using the Property Land Use Tax lot Output (PLUTO) data table entitled `mnmappluto` in the CartoDB data library, along with the associated [data dictionary](http://www1.nyc.gov/assets/planning/download/pdf/data-maps/open-data/pluto_datadictionary.pdf), answer the following questions:
-  1. How many tax lots across New York City are there?  How much area does this cover? Post the answers in the subtitle of a map that visualizes the lots by number of floors.  
-  2. Show the growth of the city.  Post a map that colors the tax properties by the year they were built in roughly 20 year increments (from 1900 through the present).  In an info box, also answer the following questions: (1) How many lots are owned by New York University?  (2) What is their average number of floors?
-  3. Create a map that shows the lots colored by distance to public spaces.
+  1. How many tax lots are there in Manhattan?  How much area does this cover?
+  2. Show the growth of the city.  Post a map that colors the tax properties by the year they were built in roughly 20 year increments (from 1900 through the present). How many lots are owned by New York University? What is their average number of floors?
+  3. Create a map that shows the lots colored by distance to public spaces.  Note that the visualization is more reliable better if you **Create a dataset from query** -- duplicating dataset based on the required query -- before creating and styling a map.
+  
+Submit your answers by following the template below:
 
-In all, you will post the links to **three** web maps.
+**Question 1**
+  1. Number of tax lots: X
+  2. Total area: X
+
+**Question 2**
+  1. Web map link: URL
+  2. Lots owned by NYU: X
+  3. Avg. number of floors: X
+
+**Question 3**
+  1. Web map link: URL
+  
+
+
 
 
