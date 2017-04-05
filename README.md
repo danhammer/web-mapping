@@ -48,5 +48,4 @@ _This is a rough course outline that is subject to change as the semester advanc
 - **Evan** forest quality for the America Pika persistence (like a hamster) which is sensitive to climate change.
 - **Cassie** air resources board, gis analysis of survey data for seasonal usage pattern of vehicles. Holes in CA smog check program.  
 - **Jeno** how mapping can be used for public policy.  Targeting voters for campaign.  Heat map.  
-- 
 
