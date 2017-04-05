@@ -134,6 +134,30 @@ INSERT answer INTO here
   INSERT answer INTO here
   ```
 
+##### Quick GROUPing lesson
+
+A common operation in data science is to collapse tabular data into group averages, counts, minimums, maximums, and other reduction operations.  What is the largest earthquake by country?  How many airports are in each state?  We group these events by a repeated attribute, like country or state.  We will learn, briefly in this lecture, how to use the [`GROUP BY`](https://www.w3schools.com/sql/sql_groupby.asp) statement to collapse data.
+
+*Practice example 1.*
+
+  - Connect the dataset of congressional districts (as of 2015) using the data library.  The data set is called `congressional_districts_2015`.
+  - Refer to the documentation of [`GROUP BY`](https://www.w3schools.com/sql/sql_groupby.asp) and display the top five states with the largest number of districts.  Display just the count and state name.
+  ```sql
+  INSERT answer INTO here
+  ```
+
+*Practice example 2.*
+
+  - Connect the dataset of populated places, `ne_10m_populated_places_simple`.
+  - Count the number of populated places in each country.  Display just the count and country name.
+  ```sql
+  INSERT answer INTO here
+  ```
+  - Find the largest populated place in each country, as listed in the dataset.  Use the `MAX` function.
+  ```sql
+  INSERT answer INTO here
+  ```
+
 #### Assignment 2
 
 Using the Property Land Use Tax lot Output (PLUTO) data table entitled `mnmappluto` in the CartoDB data library, along with the associated [data dictionary](http://www1.nyc.gov/assets/planning/download/pdf/data-maps/open-data/pluto_datadictionary.pdf), answer the following questions:
