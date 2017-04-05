@@ -130,27 +130,6 @@ INSERT answer INTO here
   INSERT answer INTO here
   ```
 
-#### Data science: tweets in San Francisco
-
-Now answer a question that borders on data science.  The insights from this small example are minimal, but the process is something that can easily yield predictive analytics.  Let's predict the weather using tweets and APIs.  First, connect the following four data sets:
-
-1. San Francisco neighborhoods, called `sf_planning_neighborhoods`.
-2. Tweets from March 11, 2016 - March 12, 2016 with the search term **weather**.  It was raining during these days in San Francisco.  Name this data table `twitter_sf_rain`.
-3. Tweets from April 1, 2016 - April 2, 2016 with the search term **weather**.  It was very nice outside during these days in San Francisco.  Name this data table `twitter_sf_sun`. 
-4. San Francisco building footprints, called `sf_building_footprints`.
-
-- Count the number of tweets about weather in San Francisco for both the rainy and sunny days.  *Note: ensure that you use `the_geom_webmercator` to ensure that the points and polygons equivalently projected.*
-```sql
-INSERT answer INTO here
-```
-
-- Count the number of tweets in San Francisco that were posted inside a building on both rainy and sunny days.
-```sql
-INSERT answer INTO here
-```
-
-- Create two API calls for the rainy day, the URLs, with just the count of tweets (1) inside buildings, and (2) the total for San Francisco.
-
 #### Assignment 2
 
 Using the Property Land Use Tax lot Output (PLUTO) data table entitled `mnmappluto` in the CartoDB data library, along with the associated [data dictionary](http://www1.nyc.gov/assets/planning/download/pdf/data-maps/open-data/pluto_datadictionary.pdf), answer the following questions:
