@@ -151,12 +151,12 @@ INSERT answer INTO here
 
 - Create two API calls for the rainy day, the URLs, with just the count of tweets (1) inside buildings, and (2) the total for San Francisco.
 
-#### Assignment
+#### Assignment 2
 
 Using the Property Land Use Tax lot Output (PLUTO) data table entitled `mnmappluto` in the CartoDB data library, along with the associated [data dictionary](http://www1.nyc.gov/assets/planning/download/pdf/data-maps/open-data/pluto_datadictionary.pdf), answer the following questions:
   1. How many tax lots are there in Manhattan?  How much area does this cover?
-  2. Show the growth of the city.  Post a map that colors the tax properties by the year they were built in roughly 20 year increments (from 1900 through the present). How many lots are owned by New York University? What is their average number of floors?
-  3. Create a map that shows the lots colored by distance to public spaces.  Note that the visualization is more reliable better if you **Create a dataset from query** -- duplicating dataset based on the required query -- before creating and styling a map.
+  2. Show the growth of the city.  Post a map that colors the tax properties by the year they were built in roughly 20 year increments (from 1900 through the present). How many lots in Manhattan are owned by New York University? What is their average number of floors?
+  3. Create a map that shows the lots colored by distance to public spaces in Manhattan.  Note that the visualization is more reliable better if you **Create a dataset from query** -- duplicating dataset based on the required query -- before creating and styling a map.
   
 Submit your answers by following the template below:
 
