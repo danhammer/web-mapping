@@ -31,6 +31,10 @@ https://dangeorge.cartodb.com/api/v2/sql?q=SELECT%20mag,%20latitude,%20longitude
 
 ***
 
+#### Sign up for student 
+
+We will need to sign up for Student Developer Packs in order to make use of some of the Carto features in the paid plans.  You will have to sign up for a GitHub handle. Then, go to [this link](https://education.github.com/pack) and enter your information. 
+
 #### Filter values based on attributes in a separate table
 
 Suppose that we want to filter our data based on data from *two separate tables* with possibly *two separate geometry types*.  For example, how do we filter the USGS earthquakes for *just* those within the United States (as opposed to just zooming into the US for the assignment)?  This section will progressively write a query to select points within a polygon.
