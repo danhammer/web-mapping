@@ -71,12 +71,32 @@ Suppose that we want to filter our data based on data from *two separate tables*
   ```
   - Assemble the previous components into a single query and preview the query result.  You don't need to create a map.
   ```sql
-  INSERT answer INTO here
+  SELECT  
+      points.*
+  FROM
+      all_day as points, world_borders as polygons
+  WHERE 
+      polygons.name = 'United States'
+  AND
+      ST_Contains(
+        polygons.the_geom, points.the_geom
+      )
   ```
 
 - Note that adding conditions or analysis to the query is pretty easy.  The fixed, up-front process of writing the query is tough.  Add a line to show only those earthquakes with a magnitute greater than 2.0.
 ```sql
-INSERT answer INTO here
+SELECT  
+    points.*
+FROM
+    all_day as points, world_borders as polygons
+WHERE 
+    polygons.name = 'United States'
+AND
+    ST_Contains(
+    	polygons.the_geom, points.the_geom
+    )
+AND 
+	points.mag > 2.0
 ```
 
 - Another question: Why is [`ST_Contains`](http://postgis.net/docs/manual-1.4/ST_Contains.html) in the PostGIS documentation rather than the standard SQL documentation, like [`IN`](http://www.w3schools.com/sql/sql_in.asp)? 
