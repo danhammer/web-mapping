@@ -124,7 +124,7 @@ INSERT answer INTO here
 
 ##### Alternative query, for practice
 
-- What is an alternative to the query that relies on [`ST_Within`](http://postgis.net/docs/manual-1.4/ST_Within.html)?  Adjust the query to replicate the results using [`ST_Buffer`](http://postgis.net/docs/manual-1.4/ST_Buffer.html) and [`ST_Contains`](http://postgis.net/docs/manual-1.4/ST_Contains.html).  This is hard.  
+- What is an alternative to the query that relies on [`ST_Within`](http://postgis.net/docs/manual-1.4/ST_Within.html)?  Adjust the query to replicate the results using [`ST_Buffer`](http://postgis.net/docs/manual-1.4/ST_Buffer.html) and [`ST_Intersects`](http://postgis.net/docs/manual-1.4/ST_Intersects.html).  This is hard.  
   - First, we need data from the two tables. Call and appropriately name the tables.
   ```sql
   FROM
