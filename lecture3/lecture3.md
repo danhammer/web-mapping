@@ -96,7 +96,7 @@ AND
     	polygons.the_geom, points.the_geom
     )
 AND 
-	points.mag > 2.0
+    points.mag > 2.0
 ```
 
 - Another question: Why is [`ST_Contains`](http://postgis.net/docs/manual-1.4/ST_Contains.html) in the PostGIS documentation rather than the standard SQL documentation, like [`IN`](http://www.w3schools.com/sql/sql_in.asp)? 
@@ -108,7 +108,7 @@ AND
 INSERT answer INTO here
 ```
 
-- Find all airports that experienced an earthquake within 50 miles in the past day (read: whatever is in the `all_day` dataset).  Use the [`ST_DWithin`](https://postgis.net/docs/ST_Within.html) function.  Note that the function requires the distance in meters, so you'll have to use `50 * 1609` as the distance argument (i.e., the number of meters in 50 miles).  Be sure, also, to ensure that you are working with the [web mercator](https://en.wikipedia.org/wiki/Web_Mercator) projection by using the `the_geom_webmercator` variable. 
+- Find all airports that experienced an earthquake within 50 miles in the past day (read: whatever is in the `all_day` dataset).  Use the [`ST_DWithin`](https://postgis.net/docs/ST_DWithin.html) function.  Note that the function requires the distance in meters, so you'll have to use `50 * 1609` as the distance argument (i.e., the number of meters in 50 miles).  Be sure, also, to ensure that you are working with the [web mercator](https://en.wikipedia.org/wiki/Web_Mercator) projection by using the `the_geom_webmercator` variable. 
 ```sql
 INSERT answer INTO here
 ```
