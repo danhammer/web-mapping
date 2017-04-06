@@ -207,7 +207,7 @@ A common operation in data science is to collapse tabular data into group averag
 Using the Property Land Use Tax lot Output (PLUTO) data table entitled `mnmappluto` in the CartoDB data library, along with the associated [data dictionary](http://www1.nyc.gov/assets/planning/download/pdf/data-maps/open-data/pluto_datadictionary.pdf), answer the following questions:
   1. How many tax lots are there in Manhattan?  How much area does this cover?
   2. Show the growth of the city.  Post a map that colors the tax properties by the year they were built in roughly 20 year increments (from 1900 through the present). How many lots in Manhattan are owned by New York University? What is their average number of floors?
-  3. Write a query that calculates the minimum distance between each lot and public spaces (defined as `landuse = '09'`).  This is hard.  Please submit your best guess if you are unable to figure it out.
+  3. Write a query that calculates the minimum distance between each lot and public spaces (defined as `landuse = '09'`). Only calculate this for those tax lots with `cartodb_id < 50`. This is hard.  Please submit your best guess if you are unable to figure it out.
   
 Submit your answers by following the template below:
 
