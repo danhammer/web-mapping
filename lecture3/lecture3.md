@@ -105,19 +105,30 @@ AND
 
 - Connect the world airports dataset `ne_10m_airports`.  How many airports are in this dataset?  Count using SQL.
 ```sql
-INSERT answer INTO here
+SELECT COUNT(*) FROM ne_10m_airports
 ```
 
 - Find all airports that experienced an earthquake within 50 miles in the past day (read: whatever is in the `all_day` dataset).  Use the [`ST_DWithin`](https://postgis.net/docs/ST_DWithin.html) function.  Note that the function requires the distance in meters, so you'll have to use `50 * 1609` as the distance argument (i.e., the number of meters in 50 miles).  Be sure, also, to ensure that you are working with the [web mercator](https://en.wikipedia.org/wiki/Web_Mercator) projection by using the `the_geom_webmercator` variable. 
 ```sql
-INSERT answer INTO here
+
+SELECT
+  airports.*
+FROM
+  ne_10m_airports AS airports, 
+  all_day AS earthquakes
+WHERE
+  ST_DWithin(
+    airports.the_geom_webmercator,
+    earthquakes.the_geom_webmercator,
+    50*1609
+  )
 ```
 
 - What happens if you use `the_geom` rather than `the_geom_webmercator`? Why does that happen?
 
 - Create a URL that displays **only the number of airports** in JSON.  Name the variable `num_airports`.
-```sql
-INSERT answer INTO here
+```
+https://dangeorge.carto.com/api/v2/sql?q=SELECT count(airports.the_geom) as num_airports FROM ne_10m_airports as airports, all_day as earthquakes WHERE ST_DWithin( airports.the_geom_webmercator, earthquakes.the_geom_webmercator, 1609 * 50 )
 ```
 
 - Now we can work on the visualization.  Create a map from the filtered airports, which are near earthquakes.  Add a layer of the full earthquakes dataset.  Style the map and zoom into southern California.
