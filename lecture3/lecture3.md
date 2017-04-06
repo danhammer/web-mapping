@@ -162,7 +162,20 @@ https://dangeorge.carto.com/api/v2/sql?q=SELECT count(airports.the_geom) as num_
   ```
   - Assemble the query from the components above (and other components not yet written):
   ```sql
-  INSERT answer INTO here
+  SELECT
+    airports.the_geom_webmercator,
+    airports.cartodb_id
+  FROM
+    ne_10m_airports AS airports, 
+    all_day AS earthquakes
+  WHERE
+  ST_Intersects(
+    ST_Buffer(
+      airports.the_geom_webmercator,
+      50*1609
+    ),
+    earthquakes.the_geom_webmercator
+  )
   ```
 
 ##### Quick GROUPing lesson
