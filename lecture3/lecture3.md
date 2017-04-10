@@ -187,7 +187,16 @@ A common operation in data science is to collapse tabular data into group averag
   - Connect the dataset of congressional districts (as of 2015) using the data library.  The data set is called `congressional_districts_2015`.
   - Refer to the documentation of [`GROUP BY`](https://www.w3schools.com/sql/sql_groupby.asp) and display the top five states with the largest number of districts.  Display just the count and state name.
   ```sql
-  INSERT answer INTO here
+  SELECT 
+    statename, COUNT(*) 
+  FROM 
+    congressional_districts_2015
+  GROUP BY 
+    statename
+  ORDER BY
+    count DESC
+  LIMIT
+    5
   ```
 
 *Practice example 2.*
@@ -195,11 +204,25 @@ A common operation in data science is to collapse tabular data into group averag
   - Connect the dataset of populated places, `ne_10m_populated_places_simple`.
   - Count the number of populated places in each country.  Display just the count and country name.
   ```sql
-  INSERT answer INTO here
+  SELECT 
+    adm0name, COUNT(*) 
+  FROM 
+    ne_10m_populated_places_simple
+  GROUP BY 
+    adm0name
+  ORDER BY
+    count DESC
   ```
   - Find the largest populated place in each country, as listed in the dataset.  Use the `MAX` function.
   ```sql
-  INSERT answer INTO here
+  SELECT 
+    adm0name, MAX(pop_min) 
+  FROM 
+    ne_10m_populated_places_simple
+  GROUP BY 
+    adm0name
+  ORDER BY
+    max DESC
   ```
 
 #### Assignment 2
