@@ -1,42 +1,16 @@
-The objective of this lecture is to review the SQL that we've learned already, adding in basic merge operations.  We will first use the *Merge with dataset* option from within the CartoDB editor and then layer in SQL queries for the instances when the point-and-click option fails.  First, however, we will review the previous assignments.  We will review the grading for [Assignment 1](https://github.com/danhammer/web-mapping/blob/master/lecture2/Lecture2.md#assignment) and the answers for [Assignment 2](https://github.com/danhammer/web-mapping/blob/master/lecture3/lecture3.md#assignment).
-
-A few motivating examples that are especially useful or attractive.
+The objective of this lecture is to review the SQL that we've learned already, adding in basic merge operations. Additionally, we will start to think about the final project, which will be published as a webpage.  Here are a few motivating examples that may be helpful:
 
 1. [Flint lead testing results](http://michiganradio.org/post/map-take-closer-look-flint-lead-testing-results#stream/0)
 2. [United States population map](https://observatory.cartodb.com/viz/582f22f2-d682-11e5-a3bd-0ecfd53eb7d3/embed_map)
 3. [Bay Area car crashes](https://team.cartodb.com/u/mamataakella/viz/322d015a-e9fb-11e5-b482-0e31c9be1b51/embed_map)
 
-#### Data set merges
+### Chloropleth, quickly
 
-First, we'll use the built-in, point-and-click merge for a *column join* to add attributes from `world_borders` to the `populated_places` table.
+We will generate a series of chloropleth maps, relying on spatial and non-spatial joins of two datasets.  A spatial join relies on the spatial relationship between the two datasets.  For example, suppose you have a dataset of U.S. wind turbine locations that *do not have the state as a column*.  How do you add that column?  How do you count the number of wind turbines by state?  A non-spatial join is based on a common column across the two tables.  Suppose, for example, that you have a dataset of population centers that have a country column.  How do you display the number of population centers in each country on a map?  This is basically the same as spatial joins for our purposes, except we don't join using a PostGIS statement.  
 
-1. Connect the `world_borders` dataset (not the high definition version).
+#### Non-spatial Joins
 
-2. Connect the `Populated places` dataset.  Rename to `populated_places` in the Data View.  Note that you will have to change the sync option to **Never** in order to change the name.  Also adjust the metadata to note these changes (this is just good practice).
-
-3. We will be merging on column value, or the ISO code for each row.  Navigate back to `world_borders`.  Select *Merge with dataset* from the drop-down menu labeled **Edit**.
-
-4. Select *Column join*.  Merge the `iso2` code from `world_borders` with `adm0_a3` from the populated places table.  
-
-5. Click *MERGE DATASETS*.  A new dataset is created and displayed in the Data View.  It is especially important to edit metadata after merges, given default table names.  What happened?  How many unique rows are in this dataset?  Note this number for later.
-
------
-Next, we will use a spatial join, where attributes are joined based on their location rather than the value of a specified variable.  This se The selection of variables now determines the attributes in the merged data set.  Use the **Spatial join** option to answer these questions.  (There are other ways, which we'll get to.)
-
-1. How many populated places are in Brazil?  
-2. Create a chloropleth map of the number of populated places for each country.  Adjust the infowindow to explore the number of populated places for all countries (not just Brazil).
-3. Assume that the `pop_max` is the population of the populated places (in 10s of people).  What is the average population of the populated places in Japan?
-4. What is the total 2005 world population?
-5. How many megacities are their in the United States?  In China? In Mexico?
-
-An unguided series of questions:
-
-1. How many airports are there in Argentina?  
-2. How many airports are there in countries with names that begin with the letter "B"?
-3. How many **major** airports are there in the United States?
-
------
-The CartoDB *Merges* queries rely on the SQL `JOIN` function. There are different types of `JOINs`:
+There are four basic types of joins in SQL:
 
 - `INNER JOIN`: Returns all rows when there is at least one match in BOTH tables
 - `LEFT JOIN`: Return all rows from the left table, and the matched rows from the right table
@@ -52,50 +26,73 @@ INNER JOIN target
 ON original.idx=target.idx
 ```
 
-1. Without relying on the point-and-click Merge option in CartoDB, merge the 2005 national population into the populated places data set. 
+##### Example: population centers
+
+Start by making a chloropleth map of population centers by country.
+
+- Connect the `world_borders` dataset (not the high definition version) and the most populated places dataset (`ne_10m_populated_places_simple`).
+- Join the two datasets with an `LEFT JOIN` on `iso3` in `world_borders` and `adm0_a3` in `ne_10m_populated_places_simple`.
+
 ```sql
 INSERT answer INTO here
 ```
 
-Now, upload the Panama Papers data set.  This data set contains information on the number beneficiaries, clients, companies, and shareholders listed in the incriminating Panama Papers.  When you upload this information, CartoDB will try to intelligently geolocate the information.  We will ignore this, since it is imperfect.  We can do better with the raw SQL.  
+- **Tricky question**.  Without saving the new view, use *just* the SQL to create a count of populated places by country.  Preserve the country name along with any other required variables to make the web map (i.e., `the_geom_webmercator` and `cartodb_id`).  You will have to write this SQL as a nested query, i.e., you will have two `SELECT` statements within the same, lengthy query.
 
-1. Connect the `panama_papers.csv` data set by first downloading the CSV from GitHub.
-2. Merge the `panama_papers` table with the `world_borders` table.  Be sure to include at least the `beneficiaries` variable from the `panama_papers` table.
-3. Create a map where each country is colored by the number of beneficiaries.  Be sure to specify the merge so that the geometry for each country is displayed, *even if there are no beneficiaries listed, i.e., null values.*
-```sql
-INSERT answer INTO here
-```
-1. Explore the difference between the different types of merges by counting the number of rows in the merge, without creating a new table for each new merged table.  This will require a **sub-query**.  You are, in effect, creating a table on the fly, and counting the rows from that. You will most likely encounter an error message that reads *subquery in FROM must have an alias*.  Think about this and fix the nested query.
 ```sql
 INSERT answer INTO here
 ```
 
-----
+- Create a copy of this super table.  And create a chloropleth of that map, where the country polygons are colored by the number of population centers within the country borders.
 
-Keep the table available.  We will now look at the `GROUP BY` clause to aggregate by certain values in the table.  Suppose, for example, you wanted to count the beneficiaries by region in the new, merged data set.  The template follows.
+##### Example: satellites
+
+I have cleaned a dataset of all active satellites in orbit.  The dataset is called `active_satellites.csv`.  The objective of this subsection is to create a chloropleth map of the satellites' countries of origin.
+
+- Connect the `active_satellites` table.
+- Adjust the queries from the previous section to join `name` in `world_borders` with `country` in `active_satellites`.  Use an `INNER JOIN`.  Why an `INNER JOIN`?  Remember to make a copy of the table before creating the map.  
 
 ```sql
-SELECT column1, column2
-FROM table_name
-WHERE [ conditions ]
-GROUP BY column1, column2
-ORDER BY column1, column2
+INSERT answer INTO here
 ```
-1.  Now, you are allowed to create a new data set with the beneficiearies for each country.  
-2.  Use this new data set to count the number of beneficiaries by region.  Order by the number of beneficiaries, from most to least.
 
-*Note that you will ultimately need to use the `GROUP BY` clause to effectively do Question 3, Assignment 2.*
+- Adjust the query in the previous section to create a chloropleth map of just the earth observing satellites.  
 
-#### Assignment 3
-
-1. Create a web map that shows the ratio of Panama Paper beneficiaries to regional airports *for each country*.
-2. Try to answer Question 3 of the previous assignment for just the first thousand entries in the PLUTO data table (i.e., the records with a CartoDB ID less than 1000).  Navigate to the lower east side to create a web map, with each record colored by distance to public space.  I would encourage you to create two separate tables, one for each sample (the first 1000 records *and* the appropriate public spaces data table).  The following SQL is a hint: the last few lines of the necessary query.
 ```sql
-WHERE 
-original.cartodb_id < 1000
-AND
-original.cartodb_id < modified.cartodb_id
-GROUP BY 
-original.cartodb_id,
-original.the_geom_webmercator
+INSERT answer INTO here
 ```
+
+#### Spatial Joins
+
+What happens if you don't have a column with a country code or name?  The join can't be indexed by a common attribute value, but it might be indexed by location.  
+
+##### Example: turbines by county
+
+We can create a chloropleth map of turbines by county.  The turbines dataset actually does have the names of counties in the table; but ignore that for the time being.  We can use that column as a check on our spatial join.
+
+- Connect [`turbines`](https://dangeorge.carto.com/dataset/turbines) and the table of "USA counties" (`cb_2013_us_county_500k`).
+- Use the [`ST_Contains`](http://postgis.net/docs/manual-1.4/ST_Contains.html) relationship to join the two tables (spatially) to get the count of turbines within each U.S. county.  Which county has the most turbines?
+
+```sql
+INSERT answer INTO here
+```
+
+- Create a map of U.S. counties with over 100 turbines, colored by number of turbines.
+
+```sql
+INSERT answer INTO here
+```
+
+##### Example: farmers' markets by county
+
+- Connect `farmers_mkts.csv` from this repository.
+- Create a map of U.S. counties colored by number of farmers markets that take credit cards.
+
+```sql
+INSERT answer INTO here
+```
+
+### Assignment 3
+
+- Use the `panama_papers` dataset to recreate *exactly* the web map in [this post](https://www.cgdev.org/blog/panama-papers-and-correlates-hidden-activity).  
+- Create another map colored by the ratio of number of beneficiaries to number of airports in the country.
