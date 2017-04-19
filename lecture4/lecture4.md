@@ -92,7 +92,29 @@ INSERT answer INTO here
 INSERT answer INTO here
 ```
 
+##### Review of Assignment 2
+
+This was a hard assignment.  The answer depends on the `GROUP BY` command.  Create a new dataset from the following view:
+
+```sql
+SELECT * FROM mnmappluto WHERE landuse = '09'
+```
+
+Then return to `mnmappluto` and run the following command.
+
+```sql
+SELECT original.cartodb_id, original.the_geom_webmercator,
+MIN(ST_Distance(
+    original.the_geom, 
+    modified.the_geom,
+    true
+  )) AS dist 
+FROM mnmappluto AS original, public_space_mnmappluto AS modified
+GROUP BY original.cartodb_id
+```
+
 ### Assignment 3
 
 - Use the `panama_papers` dataset to recreate *exactly* the web map in [this post](https://www.cgdev.org/blog/panama-papers-and-correlates-hidden-activity).  
 - Create another map colored by the ratio of number of beneficiaries to number of airports in the country.
+- **BONUS** to Assignment 2 only: Modify the correct query for Assignment 3 to generate the answer using *one query* rather than generating two tables. Then, in two sentences or fewer, explain why we use the `GROUP BY` statement in this query.
