@@ -99,13 +99,30 @@ We can create a chloropleth map of turbines by county.  The turbines dataset act
 - Use the [`ST_Contains`](http://postgis.net/docs/manual-1.4/ST_Contains.html) relationship to join the two tables (spatially) to get the count of turbines within each U.S. county.  Which county has the most turbines?
 
 ```sql
-INSERT answer INTO here
+SELECT cartodb_id, the_geom_webmercator, count(cartodb_id)
+FROM 
+(
+  	SELECT original.cartodb_id, original.the_geom_webmercator, target.blade_l
+	FROM cb_2013_us_county_500k as original
+	INNER JOIN turbines as target
+	ON ST_CONTAINS(original.the_geom_webmercator, target.the_geom_webmercator)
+) as john
+GROUP BY cartodb_id, the_geom_webmercator
 ```
 
 - Create a map of U.S. counties with over 100 turbines, colored by number of turbines.
 
 ```sql
-INSERT answer INTO here
+SELECT cartodb_id, the_geom_webmercator, count(cartodb_id)
+FROM 
+(
+  	SELECT original.cartodb_id, original.the_geom_webmercator, target.blade_l
+	FROM cb_2013_us_county_500k as original
+	INNER JOIN turbines as target
+	ON ST_CONTAINS(original.the_geom_webmercator, target.the_geom_webmercator)
+) as john
+GROUP BY cartodb_id, the_geom_webmercator
+WHERE count > 100
 ```
 
 ##### Example: farmers' markets by county
