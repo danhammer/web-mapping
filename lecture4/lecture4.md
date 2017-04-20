@@ -34,13 +34,23 @@ Start by making a chloropleth map of population centers by country.
 - Join the two datasets with an `LEFT JOIN` on `iso3` in `world_borders` and `adm0_a3` in `ne_10m_populated_places_simple`.
 
 ```sql
-INSERT answer INTO here
+SELECT original.cartodb_id, original.the_geom, original.iso3, target.adm1name
+FROM world_borders as original
+INNER JOIN ne_10m_populated_places_simple as target
+ON original.iso3=target.adm0_a3
 ```
 
 - **Tricky question**.  Without saving the new view, use *just* the SQL to create a count of populated places by country.  Preserve the country name along with any other required variables to make the web map (i.e., `the_geom_webmercator` and `cartodb_id`).  You will have to write this SQL as a nested query, i.e., you will have two `SELECT` statements within the same, lengthy query.
 
 ```sql
-INSERT answer INTO here
+
+SELECT the_geom_webmercator, cartodb_id, name, count(cartodb_id)
+FROM
+  (SELECT original.cartodb_id, original.the_geom_webmercator, original.name, original.iso3, target.adm1name
+  FROM world_borders as original
+  INNER JOIN ne_10m_populated_places_simple as target
+  ON original.iso3=target.adm0_a3) as view
+GROUP BY the_geom_webmercator, cartodb_id, name
 ```
 
 - Create a copy of this super table.  And create a chloropleth of that map, where the country polygons are colored by the number of population centers within the country borders.
