@@ -101,12 +101,12 @@ We can create a chloropleth map of turbines by county.  The turbines dataset act
 ```sql
 SELECT cartodb_id, the_geom_webmercator, count(cartodb_id)
 FROM 
-(
-  	SELECT original.cartodb_id, original.the_geom_webmercator, target.blade_l
-	FROM cb_2013_us_county_500k as original
-	INNER JOIN turbines as target
-	ON ST_CONTAINS(original.the_geom_webmercator, target.the_geom_webmercator)
-) as john
+  (
+    SELECT original.cartodb_id, original.the_geom_webmercator, target.blade_l
+    FROM cb_2013_us_county_500k as original
+    INNER JOIN turbines as target
+    ON ST_CONTAINS(original.the_geom_webmercator, target.the_geom_webmercator)
+  ) as john
 GROUP BY cartodb_id, the_geom_webmercator
 ```
 
