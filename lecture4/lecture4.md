@@ -57,10 +57,10 @@ GROUP BY the_geom_webmercator, cartodb_id, name
 
 ##### Example: satellites
 
-I have cleaned a dataset of all active satellites in orbit.  The dataset is called `active_satellites.csv`.  The objective of this subsection is to create a chloropleth map of the satellites' countries of origin.
+I have cleaned a dataset of all active satellites in orbit.  The dataset is called `data.csv`.  The objective of this subsection is to create a chloropleth map of the satellites' countries of origin.
 
-- Connect the `active_satellites` table.
-- Adjust the queries from the previous section to join `name` in `world_borders` with `country` in `active_satellites`.  Use an `INNER JOIN`.  Why an `INNER JOIN`?  Remember to make a copy of the table before creating the map.  
+- Connect the `data` table.
+- Adjust the queries from the previous section to join `name` in `world_borders` with `country` in `data`.  Use an `INNER JOIN`.  Why an `INNER JOIN`?  Remember to make a copy of the table before creating the map.  
 
 ```sql
 INSERT answer INTO here
