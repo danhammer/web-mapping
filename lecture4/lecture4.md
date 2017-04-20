@@ -95,7 +95,7 @@ What happens if you don't have a column with a country code or name?  The join c
 
 We can create a chloropleth map of turbines by county.  The turbines dataset actually does have the names of counties in the table; but ignore that for the time being.  We can use that column as a check on our spatial join.
 
-- Connect [`turbines`](https://dangeorge.carto.com/dataset/turbines) and the table of "USA counties" (`cb_2013_us_county_500k`).
+- Connect [`turbines`](https://dangeorge.carto.com/dataset/turbines) and the table of "USA counties" (`cb_2013_us_county_500k`).  If you connect the turbines dataset using the `CREATE MAP` button, then the resulting table will be called `cartodb_query`.  Be aware.
 - Use the [`ST_Contains`](http://postgis.net/docs/manual-1.4/ST_Contains.html) relationship to join the two tables (spatially) to get the count of turbines within each U.S. county.  Which county has the most turbines?
 
 ```sql
