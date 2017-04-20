@@ -113,16 +113,13 @@ GROUP BY cartodb_id, the_geom_webmercator
 - Create a map of U.S. counties with over 100 turbines, colored by number of turbines.
 
 ```sql
-SELECT cartodb_id, the_geom_webmercator, count(cartodb_id)
+SELECT *
 FROM 
-(
-  	SELECT original.cartodb_id, original.the_geom_webmercator, target.blade_l
-	FROM cb_2013_us_county_500k as original
-	INNER JOIN turbines as target
-	ON ST_CONTAINS(original.the_geom_webmercator, target.the_geom_webmercator)
-) as john
-GROUP BY cartodb_id, the_geom_webmercator
-WHERE count > 100
+  (SELECT counties.cartodb_id, count(counties.cartodb_id) AS total, counties.the_geom_webmercator
+  FROM cb_2013_us_county_500k as counties INNER JOIN turbines 
+  ON st_contains(counties.the_geom_webmercator, turbines.the_geom_webmercator) 
+  GROUP BY counties.cartodb_id, counties.the_geom_webmercator) as temp
+WHERE total > 100
 ```
 
 ##### Example: farmers' markets by county
