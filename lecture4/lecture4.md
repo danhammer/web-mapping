@@ -63,13 +63,28 @@ I have cleaned a dataset of all active satellites in orbit.  The dataset is call
 - Adjust the queries from the previous section to join `name` in `world_borders` with `country` in `data`.  Use an `INNER JOIN`.  Why an `INNER JOIN`?  Remember to make a copy of the table before creating the map.  
 
 ```sql
-INSERT answer INTO here
+SELECT the_geom_webmercator, cartodb_id, name, count(cartodb_id)
+FROM
+  (SELECT original.cartodb_id, original.the_geom_webmercator, original.name, original.iso3, target.country
+  FROM world_borders as original
+  INNER JOIN data as target
+  ON original.name=target.country) as view
+GROUP BY the_geom_webmercator, cartodb_id, name
 ```
 
 - Adjust the query in the previous section to create a chloropleth map of just the earth observing satellites.  
 
 ```sql
-INSERT answer INTO here
+SELECT the_geom_webmercator, cartodb_id, name, count(cartodb_id)
+FROM
+  (
+    SELECT original.cartodb_id, original.the_geom_webmercator, original.name, original.iso3, target.country
+    FROM world_borders as original
+    INNER JOIN data as target
+    ON original.name=target.country
+    WHERE target.purpose ILIKE 'Earth Observation'
+  ) as view
+GROUP BY the_geom_webmercator, cartodb_id, name
 ```
 
 #### Spatial Joins
