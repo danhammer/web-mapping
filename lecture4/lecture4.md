@@ -155,5 +155,5 @@ GROUP BY original.cartodb_id
 ### Assignment 3
 
 - Use the `panama_papers` dataset to recreate *exactly* the web map in [this post](https://www.cgdev.org/blog/panama-papers-and-correlates-hidden-activity).  
-- Create another map colored by the ratio of number of beneficiaries to number of airports in the country.
+- Create another map colored by the ratio of number of beneficiaries to [number of airports](https://dangeorge.carto.com/tables/ne_10m_airports/public) in the country.
 - **BONUS** to Assignment 2 only: Modify the correct query for Assignment 3 to generate the answer using *one query* rather than generating two tables. Then, in two sentences or fewer, explain why we use the `GROUP BY` statement in this query.
