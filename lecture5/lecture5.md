@@ -158,7 +158,8 @@ WHERE
 ----
 #### Assignment 4
 
-This is the **last** assignment before the final write-up!
+This is the **last** assignment before the final write-up!  
 
-1. Post the **single** SQL query to find the ten counties and days with the most fires detected by NASA satellites in the past seven days.  To be clear, there should be just one SQL query.  A county on one day is different from a county on another day.  You are looking for the ten county-days with the most fires (a county may be listed twice if it contained a lot of fires on two days).  Connect the fires data table from [here](https://danhammergenome.cartodb.com/tables/fires/public).  You can connect directly via the **Create Map** button.  Use the `cb_2013_us_county_500k` as the counties data table, found within the Data Library.
-2. Create an animated web map that loops once every 7 seconds, one second for each day represented in the fires data set.  Spend some time making this look good.  
+1. Use the [Active Fire Data](https://earthdata.nasa.gov/earth-observation-data/near-real-time/firms/active-fire-data) tool to download active fires for the "USA (Conterminous) and Hawaii" in the past 7 days from the MODIS 1km Sensor.  Post the **single** SQL query to find the ten counties and days with the most fires detected by NASA satellites in the past seven days. To be clear, a county on one day should be treated differently than a county on another day.  You are looking for the ten county-days with the most fires (a county may be listed twice if it contained a lot of fires on two days). 
+
+2. Create an animated web map that loops every 7 seconds, one second for each day represented in the fires data set.  Spend some time making this look good.  Post the CartoCSS along with the web map URL.  
