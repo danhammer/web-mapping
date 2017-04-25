@@ -76,83 +76,40 @@ LIMIT 10
 ```
 ----
 
-#### Lecture-Lab
+#### Birding
 
-1. Go to data.gov and download the data set [Birds - Breeding Survey Routes [ds60]](http://catalog.data.gov/dataset/birds-breeding-survey-routes-ds60). This data set provides access to information gathered on annual breeding bird surveys in California using a map layer developed by the Department. This data layer links to the breeding birds survey information that has been gathered from observers, compiled, and made available over the internet by the Migratory Bird Research Program, Patuxent Wildlife Research Center of the U.S. Geological Survey. The Breeding Bird Survey web site can be reached directly [here](http://www.pwrc.usgs.gov/bbs). A more complete description of the breeding bird survey program is available [here](http://www.mbr-pwrc.usgs.gov/bbs/genintro.html and http://www.pwrc.usgs.gov/bbs/about).
+We will revisit some of the datasets from previous lectures.  Upload the following four datasets, and call them  `bird_routes`, `turbines`, `drought`, and `parks`, respectively.
+
+1. [Birds - Breeding Survey Routes [ds60]](http://catalog.data.gov/dataset/birds-breeding-survey-routes-ds60). This data set provides access to information gathered on annual breeding bird surveys in California using a map layer developed by the Department. This data layer links to the breeding birds survey information that has been gathered from observers, compiled, and made available over the internet by the Migratory Bird Research Program, Patuxent Wildlife Research Center of the U.S. Geological Survey. The Breeding Bird Survey web site can be reached directly [here](http://www.pwrc.usgs.gov/bbs). A more complete description of the breeding bird survey program is available [here](http://www.mbr-pwrc.usgs.gov/bbs/genintro.html and http://www.pwrc.usgs.gov/bbs/about).
 2. Download [Onshore Industrial Wind Turbine Locations for the United States to March 2014](http://catalog.data.gov/dataset/onshore-industrial-wind-turbine-locations-for-the-united-states-to-march-201453ff7). This data set provides industrial-scale onshore wind turbine locations, corresponding facility information, and turbine technical specifications, in the United States to March 2014. The database has nearly 49,000 wind turbine records that have been collected, digitized, locationally verified, and internally quality assured and quality controlled. Turbines from the Federal Aviation Administration Digital Obstacle File, product date March 2, 2014, were used as the primary source of turbine data points.
 3. Download the most recent [Climate Prediction Center (CPC) Monthly Drought Outlook (MDO)](http://catalog.data.gov/dataset/climate-prediction-center-cpc-monthly-drought-outlook-mdo). The map shows where current drought areas are expected to improve, be removed, or persist with intensity, as well as new areas where drought may develop, at the end of the forecast period.
 4. Connect the National Parks boundaries from the CartoDB Data Library.  This table includes Parks, Monuments, Seashores, and Recreation Areas.
-5. Upload the four datasets.  Name them `bird_routes`, `turbines`, `drought`, and `parks`.
 
 Answer the following questions:
 
 - How many wind turbines are within 2 miles of USGS bird routes in California?  Display these turbines on a map with *only* the affected bird routes.  Style the map so that you can adequately see the point of this.  Also, for kicks, turn on the satellite image basemap to see the actual turbines from space.  **Note**: to display the turbines within two miles of bird routes *and* the bird routes within two miles of turbines, you will have to apply the `ST_DWithin` query within the SQL editoar for both layers on the same map.
-
 ```sql
-SELECT COUNT(*) 
-FROM (
-    SELECT
-        turbines.*
-    FROM
-        turbines,
-        bird_routes
-    WHERE
-        ST_DWithin(
-            turbines.the_geom_webmercator,
-            bird_routes.the_geom_webmercator,
-            2*1609
-        )
-) AS counter
+INSERT answer INTO here
 ```
-
 
 - Suppose that the required buffer is a function of the `stratum` variable in the `bird_routes` table.  Specifically, suppose that the original 2 mile buffer is scaled by `stratum`/100.  Create a web map of these buffers that includes just the CartoDB ID, the stratum, and the geometry (for mapping).  You will run into a problem when you directly try to divide `stratum` by one hundred.  You will first have to [`CAST`](https://www.1keydata.com/sql/sql-cast.html) the stratum as a `FLOAT` variable.
-
 ```sql
-SELECT
-    bird_routes.cartodb_id,
-    ST_Buffer(
-      bird_routes.the_geom_webmercator,
-      2*1609
-    ) AS the_geom_webmercator
-FROM
-    turbines,
-    bird_routes
-WHERE
-    ST_DWithin(
-        turbines.the_geom_webmercator,
-        bird_routes.the_geom_webmercator,
-        2*1609
-    )
-```
-
-```sql
-SELECT 
-cartodb_id, 
-stratum,
-ST_Buffer(
-    the_geom_webmercator,
-    CAST(stratum AS FLOAT)/50*1609
-) AS the_geom_webmercator
-FROM bird_routes
+INSERT answer INTO here
 ```
 
 - I am a birder.  I'm not, but I could be.  Suppose I want to go to a US National Park (not a National Preserve or National Monument) for bird watching.  Which National Parks are along bird routes in California?
-
 ```sql
-SELECT
-    nps_boundary.*
-FROM
-    nps_boundary,
-    bird_routes
-WHERE
-    ST_Intersects(
-        nps_boundary.the_geom_webmercator,
-        bird_routes.the_geom_webmercator
-    )
+INSERT answer INTO here
 ```
 
 - Suppose that I now only want to visit national parks with bird routes *with persisting drought*.  You know, the golden grass.  Use the [most recent drought data](http://www.cpc.ncep.noaa.gov/products/GIS/GIS_DATA/droughtlook/index.php) from NOAA.  This is harder than it seems, given the poor data quality of the download.
+```sql
+INSERT answer INTO here
+```
+
+#### Clustering
+
+Your final project will look a lot like this [post](https://carto.com/blog/looking-at-the-l). This is, admittedly, a phenomenal example -- worthy of public posting.  But the idea remains.  The final project will be a site with embedded maps, 
 
 
 ----
