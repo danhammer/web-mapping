@@ -2,73 +2,78 @@
 
 We will begin to assemble all of the functions from previous lectures into a sensible data narrative.  As you go through the (leading) questions, think about ways in which you'd supplement the data visualizations with insight.  Think of suggestions about how this might be used in a newspaper article or an academic publication.  
 
-There are gaps in this lecture that are intentional.  If you have questions about previous assignments or embedded queries, then please don't hesitate to ask.
-
 ----
 #### Assignment 3 answers
 
-**Question 1**.  Merge the `panama_papers` data table with `world_borders`.  This will tie the number of beneficiaries to the country border geometries.  Then spatially join the new data table, called `world_beneficiaries` with the airport count.  Call this **new** data table `beneficiaries_airports` and rename the variable `intersect_count` to `num_airports`.  This data table should have the name of the country, beneficiaries, and a region identifier.  
+**Question 1**.  
+- Create a table with the sum of "links" in the table.  Save the table.  You can call it by the default name, `panama_papers_copy`. 
+```sql
+SELECT 
+    cartodb_id, 
+    iso, 
+    the_geom_webmercator, 
+    SUM(beneficiaries + clients + shareholders + companies) as total
+FROM 
+    panama_papers
+GROUP BY 
+    cartodb_id
+```
+- Merge the `panama_papers_copy` table with `world_borders` to link the number of beneficiaries to the country border geometries. Save this new table as `world_links`, create a map, and style the chloropleth according to the number of beneficiaries.  A bonus is to directly use the colors seen in the [reference map published by CGD](https://www.cgdev.org/blog/panama-papers-and-correlates-hidden-activity) by editing the CartoCSS.
+```sql
+SELECT 
+    original.cartodb_id,
+    original.the_geom_webmercator,
+    target.total
+FROM
+    world_borders as original
+INNER JOIN 
+    panama_papers_copy as target
+ON original.iso2=target.iso
+```
+**Question 2**.
+- Spatially join the new data table, which I've called `world_links`, to the airport count.  Create a new table called `airport_total` from the query.
 
 ```sql
-SELECT region, SUM(num_airports) AS num
-FROM beneficiaries_airports
-GROUP BY region
-ORDER BY num DESC
+SELECT cartodb_id, the_geom_webmercator, total, count(cartodb_id)
+FROM 
+  (
+    SELECT original.cartodb_id, original.the_geom_webmercator, original.total
+    FROM world_links as original
+    INNER JOIN ne_10m_airports as target
+    ON ST_CONTAINS(original.the_geom_webmercator, target.the_geom_webmercator)
+  ) as temp_table
+GROUP BY cartodb_id, the_geom_webmercator, total
 ```
-
-Create a new data table from this query that yields the number of regional airports.  *Note that you can combine all these queries; but for the sake of simplicity and exposition, it is preferable to create new tables.*  Call this `regional_airports`.  Now the final merge and calculations, all at once:
-
+- Apply the final query to get the ratio of links to airports, noting that you can't divide by zero. Color the map by ratio.  Note that this data visualization is, in fact, way more advanced than even the map provided in [this blog post](http://www.cgdev.org/blog/panama-papers-and-correlates-hidden-activity) by one of the top economic think tanks in the world.
 ```sql
 SELECT 
     cartodb_id, 
     the_geom_webmercator, 
-    name, 
-    (beneficiaries/num) AS ratio
-FROM (
-    SELECT original.*, target.num
-    FROM beneficiaries_airports AS original
-    INNER JOIN regional_airports AS target
-    ON original.region=target.region
-) AS final_table
-WHERE num > 0
+    (total/count) AS ratio
+FROM airport_total
+WHERE count > 0
 ```
 
-Color the map by ratio.  Note that this data visualization is, in fact, way more advanced than even the map provided in [this blog post](http://www.cgdev.org/blog/panama-papers-and-correlates-hidden-activity) by one of the top economic think tanks in the world.
+**Question 3 (BONUS)**. 
 
-**Question 2**. First split the dataset into parks and not parks.  I would save these as separate tables, `mnmappluto_park` and `mnmappluto_not_park`, using the following two clauses:
-
-```sql
-SELECT * FROM mnmappluto WHERE zonedist1 ILIKE 'PARK%'
-```
-```sql
-SELECT * FROM mnmappluto WHERE zonedist1 NOT ILIKE 'PARK%'
-```
-
-You can split the dataset into two parts using other definitions of public vs. nonpublic landuse, e.g., using the `landuse` variable.  Add both layers to the same map.  Color the public spaces using a "simple" coloring, maybe all green.  Color the nonpublic spaces according to the *minimum* distance.
-
+- The objective of this question was to combine the minimum, public space queries into a single query.  Note that the previous two questions can also be combined into a single, super long query.
 ```sql
 SELECT 
-mnmappluto_not_park.*,
-MIN(
-  ST_Distance(
-    mnmappluto_not_park.the_geom,
-    mnmappluto_park.the_geom
-  )
-) AS dist
-FROM mnmappluto_not_park, mnmappluto_park
-GROUP BY mnmappluto_not_park.cartodb_id
+	original.cartodb_id, 
+    original.the_geom_webmercator,
+    MIN(ST_Distance(
+        original.the_geom, 
+        modified.the_geom,
+        true
+    )) AS dist 
+FROM 
+	mnmappluto AS original, 
+    (
+      SELECT * FROM mnmappluto WHERE landuse = '09'
+    ) AS modified
+GROUP BY original.cartodb_id
+LIMIT 10
 ```
-
-Note that you will have to use the `MIN` operator to create a variable.  If you try this without a `GROUP BY` clause, you will get an error.  Effectively, you are pairwise comparing each nonpublic lot to each public lot.  Then you are collapsing this implicit array into a single value according to the minimum value.  This is where the `GROUP BY` clause comes in; and why it's so difficult, conceptually.  The quick rule-of-thumb is that whenever you are using a function to create a new variable on the fly, you will have to use a `GROUP BY` clause -- unless you want to collapse the *entire* column.  You would only do this for a basic `COUNT` or a simple `AVG` across an entire column.  
-
-Note also that if you *do not* create two separate data tables, then you may run into computation problems.  You may fall into a weird recursive loop.  There are ways to get around this, like adding the conditional to the query in order to prevent duplicate comparisons.
-
-```sql
-WHERE mnmappluto_not_park.cartodb_id < mnmappluto_park.cartodb_id
-```
-
-All that said, here is [**my version**](https://danhammergenome.cartodb.com/viz/f74514bc-028f-11e6-90bf-0ecfd53eb7d3/embed_map).
-
 ----
 
 #### Lecture-Lab
