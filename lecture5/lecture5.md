@@ -109,7 +109,19 @@ INSERT answer INTO here
 
 #### Clustering
 
-Your final project will look a lot like this [post](https://carto.com/blog/looking-at-the-l). This is, admittedly, a phenomenal example -- worthy of public posting.  But the idea remains.  The final project will be a site with embedded maps, 
+Your final project will look a lot like this [post](https://carto.com/blog/looking-at-the-l). This is, admittedly, a phenomenal example -- worthy of public posting.  But the idea remains.  The final project will be a site with embedded maps, a narrative, and some very basic analysis.  
+
+1. Connect the [`brooklyn_poverty`](https://dangeorge.carto.com/dataset/brooklyn_poverty) table.  This table contains information on income and poverty at the block group level from the American Community Survey.
+
+2. Go directly to the Map view and generate analysis to *detect outlier and clusters* on the poverty per capita measure.  The objective is to find connected blocks of poverty and their relationship to the planned L Train closures.
+
+3. Set the parameters `significance=1` and `neighbors=5` and `APPLY` the analysis.
+
+4. We will use the `quads` and `significance` values to create a map similar to the final, punchline map in the [post](https://carto.com/blog/looking-at-the-l).  The `quads` variable contains the following values: HH, LL, HL, and LH, where H is for high, L is for low. The first letter is the unit compared to the rest of the dataset (i.e., is it high or low compared to the dataset's average). The second letter is how the average of the neighbors of the geography compare to the entire dataset.  The `signifance` variable measures whether the pattern of values in the geography could be better attributed to random chance. The lower the significance value, the more likely the geography's `quads` designation is not due to random chance (i.e., there is an underlying process driving the spatial arrangement of values).  Add two widgets, one for `quads` and another for `significance`.
+
+5. Create a map of significant clusters of wealth and poverty based on the designations.
+
+
 
 
 ----
