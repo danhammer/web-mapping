@@ -1,31 +1,13 @@
 
-The objective of this lecture-lab is to connect more data sets for the final project.  Additionally, we will begin to focus more on map design.  
+The objectives of this lecture are the following:
+
+1. Review assignment answers
+2. Review `UNION` and conditional formatting in CSS
+3. Importing Open Street Map data
+4. Introduce Medium as a way to publish maps and reports.
 
 #### Assignment 4 answers
 
-The objective of this assignment was to gain more fluency with SQL and introduce the direct editing of CSS for styling maps.
-
-**Question 1**.  Post the **single** SQL query to find the ten counties and days with the most fires detected by NASA satellites in the past seven days.  To be clear, there should be just one SQL query.  A county on one day is different from a county on another day.  You are looking for the ten county-days with the most fires (a county may be listed twice if it contained a lot of fires on two days).  Connect the fires data table from [here](https://danhammergenome.cartodb.com/tables/fires/public).  You can connect directly via the **Create Map** button.  Use the `cb_2013_us_county_500k` as the counties data table, found within the Data Library.
-
-The result should have a separate row for each county-date combination, per the Announcement on Canvas.  The objective is to find the most active county and times, which may be useful for fire responders.  Note the subquery in the final SQL query, posted below.  We need to "alias" the subquery with an `AS` statement, even though we never explicitly use the `mytable` alias.  
-
-```sql
-SELECT affgeoid, acq_date, COUNT(*)
-FROM (
-    SELECT 
-        fires.acq_date, 
-        fires.the_geom_webmercator, 
-        fires.cartodb_id, 
-        county.affgeoid 
-    FROM 
-        fires, 
-        cb_2013_us_county_500k AS county
-    WHERE ST_Within(fires.the_geom, county.the_geom)
-) AS mytable
-GROUP BY affgeoid, acq_date
-ORDER BY COUNT(*) DESC
-LIMIT 10
-```
 | affgeoid         | acq_date   | count |
 |------------------|------------|-------|
 | 5101300US2001017 | 2016-04-12 | 104   |
@@ -38,42 +20,6 @@ LIMIT 10
 | 5101300US2001111 | 2016-04-12 | 47    |
 | 5101300US2001127 | 2016-04-12 | 45    |
 | 5101300US2004035 | 2016-04-14 | 43    |
-
-**Question 2**.  Create an animated web map that loops once every 7 seconds, one second for each day represented in the fires data set.  Spend some time making this look good. 
-
-You should choose the **Torque** visualization option, which should automatically detect the `acq_date` variable as the temporal index.  With this, switch over to the CSS tab and adjust the defaults so that the time steps and duration yield a map that looks good.  
-
-```css
-/** torque visualization */
-
-Map {
--torque-frame-count:7;
--torque-animation-duration:4;
--torque-time-attribute:"acq_date";
--torque-aggregation-function:"cartodb_id";
--torque-resolution:2;
--torque-data-aggregation:cumulative;
-}
-
-#fires{
-  comp-op: lighter;
-  marker-fill-opacity: 0.9;
-  marker-line-color: #FFF;
-  marker-line-width: 0;
-  marker-line-opacity: 1;
-  marker-type: ellipse;
-  marker-width: 6;
-  marker-fill: #F11810;
-}
-#fires[frame-offset=1] {
- marker-width:8;
- marker-fill-opacity:0.45; 
-}
-#fires[frame-offset=2] {
- marker-width:10;
- marker-fill-opacity:0.225; 
-}
-```
 
 #### Lecture
 ##### Styling maps based on table values
@@ -95,13 +41,7 @@ FROM pumps
 - Navigate to the `cholera` data table and append the `pumps` table using the [`UNION`](http://www.w3schools.com/sql/sql_union.asp) operator.
 
 ```sql
-SELECT cartodb_id, the_geom_webmercator, count, 'cholera' as layer
-FROM cholera_deaths
-
-UNION ALL
-
-SELECT cartodb_id, the_geom_webmercator, NULL as count, 'pump' as layer
-FROM pumps
+INSERT answer INTO here
 ```
 
 - Ensure that the correct number of pumps and disease incidence are represented in the unioned data table, i.e., replicate the table below with a SQL query.
@@ -112,32 +52,13 @@ FROM pumps
 | pump    | 8     |
 
 ```sql
-SELECT layer, COUNT(*)
-FROM (
-    SELECT cartodb_id, the_geom_webmercator, count, 'cholera' as layer
-    FROM cholera_deaths
-
-    UNION ALL
-
-    SELECT cartodb_id, the_geom_webmercator, NULL as count, 'pump' as layer
-    FROM pumps
-  ) AS mytable
-GROUP BY layer
+INSERT answer INTO here
 ```
 
 - Add the following lines to the bottom of the CSS editor.  Manually adjust the missing values and play with them.  
 
 ```css
-#cholera_deaths [layer='pump'] {
-  marker-width: 15.0;
-  marker-fill: #3399FF;
-  marker-line-color: black;
-  marker-line-width: 0;
-  marker-opacity: 1;
-  marker-placement: point;
-  marker-type: ellipse;
-  marker-allow-overlap: true;
-}
+INSERT answer INTO here
 ```
 - How does this compare to adding the two separate layers?  Can you think of a previous example where having all the data in a single table with conditional CSS would have been helpful?
 
