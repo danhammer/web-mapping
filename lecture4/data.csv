@@ -1,4 +1,4 @@
-,country,users,purpose,detailed_purpose,period,mass,site,contractor,min_lifetime,max_lifetime,date
+idx,country,users,purpose,detailed_purpose,period,mass,site,contractor,min_lifetime,max_lifetime,date
 0,Denmark,Civil,Earth Observation,Automatic Identification System (AIS),95.9,1.0,Guiana Space Center,University of Aalborg,,,2016-04-25
 1,Multinational,Commercial,Communications,,1436.03,6330.0,Guiana Space Center,Space Systems/Loral,15.0,15.0,2014-02-06
 2,Multinational,Commercial,Communications,,1436.1,1800.0,Cape Canaveral,Boeing Satellite Systems,15.0,15.0,2016-06-15
