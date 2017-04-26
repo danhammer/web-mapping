@@ -1,5 +1,10 @@
 
+The objectives of this lecture are:
 
+1. Review Assignment 3
+2. Revisit some familiar datasets to increase SQL fluency and add change-of-data-type query
+3. Use Carto builder to do clustering analysis
+4. Hear from Chief Data Scientist at the World Resource
 We will begin to assemble all of the functions from previous lectures into a sensible data narrative.  As you go through the (leading) questions, think about ways in which you'd supplement the data visualizations with insight.  Think of suggestions about how this might be used in a newspaper article or an academic publication.  
 
 ----
