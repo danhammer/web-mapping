@@ -1,8 +1,8 @@
 
 The objectives of this lecture are:
 
-1. [A review of Medium features to share your maps (and final project)]()
-2. [An actual project that used Carto for irrigation districts in the Central Valley.  Working on `UNION`.]()
+1. [A review of Medium features to share your maps (and final project)](https://github.com/danhammer/web-mapping/blob/master/lecture7/lecture7.md#medium-to-share-maps)
+2. [An actual project that used Carto for irrigation districts in the Central Valley.  Working on `UNION`.](https://github.com/danhammer/web-mapping/blob/master/lecture7/lecture7.md#spatial-calculations)
 
 #### Medium to share maps
 
@@ -21,11 +21,11 @@ Follow these steps to set up a Medium account.
 3. Click **Write a story** and start writing.
 4. Publish your story.  You will submit the URL as your final assignment.
 
-Pretty simple.  Probably not worth enumerated steps, but whatever.  The features that will be useful for 
+Pretty simple.  Probably not worth enumerated steps, but whatever.  The features that will be useful for the final assignment follow:
 
 1. [Embedding code directly](https://webapps.stackexchange.com/questions/66453/how-to-embed-code-snippets-in-medium). There is no syntax highlighting, but it's simple and clean.
 2. [Embedding a Gist](https://blog.medium.com/yes-we-get-the-gist-1c2a27cdfc22).  Here, the code you post will be highlighted appropriately, but the interface is not as clean.
-3. [Embedding a map]().
+3. [Embedding a map](https://help.medium.com/hc/en-us/articles/214981378-Embedding).  Carto is supported by the embedding service that Medium uses.  Click the `<>` icon in the `+` dropdown menu next to the text cursor, paste in the Carto embed URL, and the map will render.
 
 #### Spatial calculations
 
