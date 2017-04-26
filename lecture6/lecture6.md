@@ -128,3 +128,5 @@ The final project will be submitted as a Medium post.  Medium supports both code
 1. Three embedded web maps
 2. A relevant research question, which can be answered or enhanced with web maps.  
 3. Calculations that are the result of at least three *spatial* SQL queries.  These SQL queries should be posted within the text body.
+
+If you just post the bare minimum, you'll get an 80%.  Making the narrative interesting, where maps *actually* enhance the answer, will earn an exceptional grade.
