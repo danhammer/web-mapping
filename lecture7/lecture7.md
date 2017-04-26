@@ -1,27 +1,31 @@
 
-This is the final lecture.  We will focus more on the *sharing* of online maps, rather than creating or distilling information from them.  However, we will also review some of the basic queries that will be useful in the final project.
+The objectives of this lecture are:
 
-#### Sharing maps via Wix
+1. [A review of Medium features to share your maps (and final project)]()
+2. [An actual project that used Carto for irrigation districts in the Central Valley.  Working on `UNION`.]()
 
-There are many services that are now available to easily build simple websites and blogs, including [Wordpress](https://www.wordpress.com), [Squarespace](https://www.squarespace.com/), and [Weebly](https://www.weebly.com/).  We will review how to embed a web map in a blog post, built on [Wix](http://www.wix.com/).  Narrowly, this will be helpful for your final project.  More generally, however, this final step is necessary to realize the value of web mapping.  *Forgive me while I wax philosophical.*  We've learned to present spatial information on a web map, and to distill parceled insights from the underlying data.  We chose CartoDB as the platform of choice because sharing the interactive, aesthetically attentive maps is relatively easy.  Sending a link to a web map may not be sufficient to communicating the mapped information.  It is likely that additional context will be required to reduce the mental overhead to engage with the data.  For this, we need a website, where the maps serve as visualizations of bigger, broader ideas.  All this is to say: Publishing the maps to the web may be just as important as building the maps, since communication is predicated on easy engagement with information.
+#### Medium to share maps
 
-We will use [Wix](http://www.wix.com/) to create our website for a few reasons.  
+There are many services that are now available to easily build simple websites and blogs, including [Wordpress](https://www.wordpress.com), [Squarespace](https://www.squarespace.com/), and [Weebly](https://www.weebly.com/).  We will review how to embed a web map in a blog post, built on [Medium](http://www.medium.com/).  Narrowly, this will be helpful for your final project.  More generally, however, this final step is necessary to realize the value of web mapping.  *Forgive me while I wax philosophical.*  We've learned to present spatial information on a web map, and to distill parceled insights from the underlying data.  We chose CartoDB as the platform of choice because sharing the interactive, aesthetically attentive maps is relatively easy.  Sending a link to a web map may not be sufficient to communicating the mapped information.  It is likely that additional context will be required to reduce the mental overhead to engage with the data.  For this, we need a website, where the maps serve as visualizations of bigger, broader ideas.  All this is to say: Publishing the maps to the web may be just as important as building the maps, since communication is predicated on easy engagement with information.
 
-1. Embedding external websites (like the embeddable maps) is much easier than competing platforms, since HTML `iframe` tags are directly supported without external plugins.  
-2. It is easy to sign up and authenticate using Google or Facebook; and then it is easy to publish a free site, even if it is littered with Wix ads until you upgrade.  
+We will use [Medium](http://www.medium.com/) to create our website for a few reasons.  
+
+1. Embedding maps is easy.
+2. Signing up and using the platform is easy.
 3. I like the simple aesthetics.
 
-If the projector works, then I will walk through the setup steps with you at the front of the class.  If not, follow these steps:
+Follow these steps to set up a Medium account.
 
-- Sign up with a new e-mail.
-- Click the tab to start a **Blog**.  This format allows for multiple and possibly disparate threads, rather than one major thread with explanatory pages or features.  As such, the blog template is a decent place to start.
-- Choose a simple, image-heavy template like **Food Blog**.  Click **Edit**.
-- Change the title and the header image, which could be a (wide) screenshot of your favorite map.
-- Your final project can comprise a single blog post.  Delete the two unnecessary posts in the Food Blog template, and begin to edit the remaining blog post.
-- When you are ready to add a web map, click the *Insert HTML* button in the post editor, and copy-paste the **Embed It** tab under the CartoDB's **Publish** tab.
-- Finish a draft, adjust elements as needed, and when you're ready click **Publish** in the top right corner.  You will automatically get a basic URL.  You won't be able to change this too much, unless you purchase a Wix plan and get your own domain name.  Mine is here: [danhammer.wix.com/web-mapping](http://danhammer.wix.com/web-mapping).
+1. Navigate to [Medium](https://medium.com/).
+2. Click **Sign up** to register with an e-mail address.
+3. Click **Write a story** and start writing.
+4. Publish your story.  You will submit the URL as your final assignment.
 
-This should give you a sufficient start to a website to share your work.  If you already have a web site up and running (and you are able to embed CartoDB maps) then you don't have to use Wix.  Use whatever works for you.  However, this is now a *requirement* for the final project.  
+Pretty simple.  Probably not worth enumerated steps, but whatever.  The features that will be useful for 
+
+1. [Embedding code directly](https://webapps.stackexchange.com/questions/66453/how-to-embed-code-snippets-in-medium). There is no syntax highlighting, but it's simple and clean.
+2. [Embedding a Gist](https://blog.medium.com/yes-we-get-the-gist-1c2a27cdfc22).  Here, the code you post will be highlighted appropriately, but the interface is not as clean.
+3. [Embedding a map]().
 
 #### Spatial calculations
 
