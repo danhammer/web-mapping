@@ -1,10 +1,10 @@
 
 The objectives of this lecture are the following:
 
-1. Review assignment answers
-2. Review `UNION` and conditional formatting in CSS
-3. Importing Open Street Map data
-4. Introduce Medium as a way to publish maps and reports.
+1. [Review assignment answers](https://github.com/danhammer/web-mapping/blob/master/lecture6/lecture6.md#assignment-4-answers)
+2. [Review `UNION` and conditional formatting in CSS](https://github.com/danhammer/web-mapping/blob/master/lecture6/lecture6.md#styling-maps-based-on-table-values)
+3. [Importing Open Street Map data](https://github.com/danhammer/web-mapping/blob/master/lecture6/lecture6.md#importing-open-street-map-data-into-cartodb)
+4. [Introduce Medium as a way to publish maps and reports.](https://github.com/danhammer/web-mapping/blob/master/lecture6/lecture6.md#final-project)
 
 #### Assignment 4 answers
 
