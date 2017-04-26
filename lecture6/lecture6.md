@@ -117,10 +117,14 @@ out skel qt;
 ```
 - How many schools are there in San Francisco?  How many are in each planning neighborhood (also a dataset used in a previous lecture)?
 
-##### Final project
+#### Final project
 
 You should begin to work on your final projects.  At least review the available data.  There are some datasets that require you to contact a data administrator for access.  I am not sure how long this process takes, so if you are very excited about a particular dataset then start as early as possible.  Note that you are *not required* to use these (restricted) datasets, or any specific dataset.  Also, please feel free to incorporate other, external data.  Just try to tie it to California, with some thematic focus on environment -- broadly defined.  This can include the usual suspects like water scarcity or biodiversity, but can range to waste management and transport (even transport safety).  
 
 If you end up using the project for work or other courses, please let me know.  I'd love to stay connected to your work.
 
-The final class will be Wednesday, May 11.  This class will include a short section on setting up a blog or simple website to share your web mapping work.  This should help with your final project.  If you are currently working on your project, then you can begin to think about uploading it to [Wix](http://www.wix.com/), [Squarespace](https://www.squarespace.com/), [Weebly](https://www.weebly.com/), or any other starter site creator.  All of these service have free tiers, which you can use to post and share your work.
+The final project will be submitted as a Medium post.  Medium supports both code snippets and embeddable maps, both of which are required in the final project.  We will review the features of Medium in the final lecture.  You can jump ahead if you want to get a start on the final write up.  In the meantime, though, here are the requirements of the final project:
+
+1. Three embedded web maps
+2. A relevant research question, which can be answered or enhanced with web maps.  
+3. Calculations that are the result of at least three *spatial* SQL queries.  These SQL queries should be posted within the text body.
