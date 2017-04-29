@@ -93,22 +93,69 @@ Answer the following questions:
 
 - How many wind turbines are within 2 miles of USGS bird routes in California?  Display these turbines on a map with *only* the affected bird routes.  Style the map so that you can adequately see the point of this.  Also, for kicks, turn on the satellite image basemap to see the actual turbines from space.  **Note**: to display the turbines within two miles of bird routes *and* the bird routes within two miles of turbines, you will have to apply the `ST_DWithin` query within the SQL editoar for both layers on the same map.
 ```sql
-INSERT answer INTO here
+SELECT COUNT(*) FROM (SELECT
+    turbines.*
+FROM
+    turbines,
+    bird_routes
+WHERE
+    ST_DWithin(
+        turbines.the_geom_webmercator,
+        bird_routes.the_geom_webmercator,
+        2*1609
+    )
+) AS counter
 ```
 
 - Suppose that the required buffer is a function of the `stratum` variable in the `bird_routes` table.  Specifically, suppose that the original 2 mile buffer is scaled by `stratum`/100.  Create a web map of these buffers that includes just the CartoDB ID, the stratum, and the geometry (for mapping).  You will run into a problem when you directly try to divide `stratum` by one hundred.  You will first have to [`CAST`](https://www.1keydata.com/sql/sql-cast.html) the stratum as a `FLOAT` variable.
 ```sql
-INSERT answer INTO here
+SELECT
+    bird_routes.cartodb_id,
+    ST_Buffer(
+      bird_routes.the_geom_webmercator,
+      2*1609
+    ) AS the_geom_webmercator
+FROM
+    turbines,
+    bird_routes
+WHERE
+    ST_DWithin(
+        turbines.the_geom_webmercator,
+        bird_routes.the_geom_webmercator,
+        2*1609
+    )
 ```
 
 - I am a birder.  I'm not, but I could be.  Suppose I want to go to a US National Park (not a National Preserve or National Monument) for bird watching.  Which National Parks are along bird routes in California?
 ```sql
-INSERT answer INTO here
+SELECT 
+cartodb_id, stratum,
+ST_Buffer(
+    the_geom_webmercator,
+    CAST(stratum AS FLOAT)/50*1609
+) AS the_geom_webmercator
+FROM bird_routes
+
+SELECT
+    nps_boundary.*
+FROM
+    nps_boundary,
+    bird_routes
+WHERE
+    ST_Intersects(
+        nps_boundary.the_geom_webmercator,
+        bird_routes.the_geom_webmercator
+    )
 ```
 
 - Suppose that I now only want to visit national parks with bird routes *with persisting drought*.  You know, the golden grass.  Use the [most recent drought data](http://www.cpc.ncep.noaa.gov/products/GIS/GIS_DATA/droughtlook/index.php) from NOAA.  This is harder than it seems, given the poor data quality of the download.
 ```sql
-INSERT answer INTO here
+SELECT * FROM mdo_1
+WHERE description ILIKE 
+
+'%FID_improv</td>
+
+<td>1%'
 ```
 
 #### Clustering
