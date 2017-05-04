@@ -93,7 +93,13 @@ SELECT cartodb_id, the_geom_webmercator, 'pump' as layer FROM pumps
 | pump    | 8     |
 
 ```sql
-INSERT answer INTO here
+SELECT layer, COUNT(*)
+FROM (
+    SELECT cartodb_id, the_geom_webmercator, 'cholera' as layer FROM cholera
+    UNION ALL
+    SELECT cartodb_id, the_geom_webmercator, 'pump' as layer FROM pumps
+) as mytable
+GROUP BY layer
 ```
 
 - Add the following lines to the bottom of the CSS editor.  Manually adjust the missing values and play with them.  
