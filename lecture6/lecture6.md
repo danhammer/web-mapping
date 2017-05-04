@@ -8,6 +8,43 @@ The objectives of this lecture are the following:
 
 #### Assignment 4 answers
 
+The objective of this assignment was to solidify understanding of nested queries.  First, you do a spatial query to assign each fire to a county.  We use `affgeoid` as the unique county identifier.  The first part of the query is then given by:
+
+```sql
+SELECT 
+	fires.acq_date, 
+    fires.the_geom_webmercator, 
+    fires.cartodb_id, 
+    county.affgeoid 
+FROM 
+    fires, 
+    cb_2013_us_county_500k AS county
+WHERE ST_Within(fires.the_geom, county.the_geom)
+```
+
+Then, once we have the date of the fire detection (from the `fires` table) and the county identifier, we aggregate the count by the county *and* date.  We use `group by` to do so.  The final query follows:
+
+
+```sql
+SELECT affgeoid, acq_date, COUNT(*)
+FROM (
+    SELECT 
+    	fires.acq_date, 
+	    fires.the_geom_webmercator, 
+	    fires.cartodb_id, 
+	    county.affgeoid 
+    FROM 
+	    fires, 
+	    cb_2013_us_county_500k AS county
+    WHERE ST_Within(fires.the_geom, county.the_geom)
+) AS mytable
+GROUP BY affgeoid, acq_date
+ORDER BY COUNT(*) DESC
+LIMIT 10
+```
+
+The output will look something like this:
+
 | affgeoid         | acq_date   | count |
 |------------------|------------|-------|
 | 5101300US2001017 | 2016-04-12 | 104   |
@@ -20,6 +57,8 @@ The objectives of this lecture are the following:
 | 5101300US2001111 | 2016-04-12 | 47    |
 | 5101300US2001127 | 2016-04-12 | 45    |
 | 5101300US2004035 | 2016-04-14 | 43    |
+
+The second part of the question relies more on visualization rather than code, drawing on a section from [Lecture 1](https://github.com/danhammer/web-mapping/blob/master/lecture1/Lecture1.md#guided-tutorial-get-started-with-animated-maps).
 
 #### Lecture
 ##### Styling maps based on table values
