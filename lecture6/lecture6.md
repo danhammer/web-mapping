@@ -80,7 +80,9 @@ FROM pumps
 - Navigate to the `cholera` data table and append the `pumps` table using the [`UNION`](http://www.w3schools.com/sql/sql_union.asp) operator.
 
 ```sql
-INSERT answer INTO here
+SELECT cartodb_id, the_geom_webmercator, 'cholera' as layer FROM cholera
+UNION ALL
+SELECT cartodb_id, the_geom_webmercator, 'pump' as layer FROM pumps
 ```
 
 - Ensure that the correct number of pumps and disease incidence are represented in the unioned data table, i.e., replicate the table below with a SQL query.
