@@ -12,7 +12,7 @@ The objective of this assignment was to solidify understanding of nested queries
 
 ```sql
 SELECT 
-	fires.acq_date, 
+    fires.acq_date, 
     fires.the_geom_webmercator, 
     fires.cartodb_id, 
     county.affgeoid 
@@ -30,12 +30,12 @@ SELECT affgeoid, acq_date, COUNT(*)
 FROM (
     SELECT 
     	fires.acq_date, 
-	    fires.the_geom_webmercator, 
-	    fires.cartodb_id, 
-	    county.affgeoid 
+	fires.the_geom_webmercator, 
+	fires.cartodb_id, 
+	county.affgeoid 
     FROM 
-	    fires, 
-	    cb_2013_us_county_500k AS county
+	fires, 
+	cb_2013_us_county_500k AS county
     WHERE ST_Within(fires.the_geom, county.the_geom)
 ) AS mytable
 GROUP BY affgeoid, acq_date
