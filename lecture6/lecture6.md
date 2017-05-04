@@ -105,7 +105,25 @@ GROUP BY layer
 - Add the following lines to the bottom of the CSS editor.  Manually adjust the missing values and play with them.  
 
 ```css
-INSERT answer INTO here
+#snow_combined [layer='pump'] {
+  marker-width: 20;
+  marker-fill: #1D6996;
+  marker-fill-opacity: 1;
+  marker-allow-overlap: true;
+  marker-line-width: 1;
+  marker-line-color: #FFF;
+  marker-line-opacity: 0;
+}
+
+#snow_combined {
+  marker-width: 7;
+  marker-fill: #892747;
+  marker-fill-opacity: 1;
+  marker-allow-overlap: false;
+  marker-line-width: 1;
+  marker-line-color: #FFF;
+  marker-line-opacity: 1;
+}
 ```
 - How does this compare to adding the two separate layers?  Can you think of a previous example where having all the data in a single table with conditional CSS would have been helpful?
 
