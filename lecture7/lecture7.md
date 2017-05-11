@@ -41,7 +41,13 @@ The objective of this section is to continue to develop some fluency in SQL quer
      ![](http://i.imgur.com/w4oKPYI.png)
 
     ```sql
-    INSERT answer INTO here
+    SELECT 
+        countyfp,
+        ST_Union(the_geom_webmercator) AS the_geom_webmercator,  
+        ROW_NUMBER() OVER 
+            (ORDER BY countyfp) AS cartodb_id
+    FROM gsas
+    GROUP BY countyfp
     ```
     - Aside: Would this same query work for more than the two supplied counties?  For all US counties?  How would you adjust the code to aggregate the county boundaries to state boundaries?
 
@@ -49,13 +55,47 @@ The objective of this section is to continue to develop some fluency in SQL quer
     - How many separate groundwater basins are at least partially covered by Tulare or Madera county?  Use the `gsas_union` data table you created in the previous step, and count the number of *rows* in the groundwater data (which are technically subbasins).
 
     ```sql
-    INSERT answer INTO here
+    SELECT COUNT(*)
+    FROM
+    (
+      SELECT
+        gsas_union.countyfp,
+        ground.*
+      FROM 
+          i08_b118_ca_groundwaterbasins AS ground, 
+          gsas_union
+      WHERE
+          ST_Intersects(
+              gsas_union.the_geom_webmercator,
+              ground.the_geom_webmercator
+          )
+     ) as mytable
     ```
 
     - What is the total area of each county that covers a groundwater basin?  Note that the units won't matter.  We are calculating this number toward a proportion.  Save this two-row table with `countyfp` and `area` variables as a new table called `gbasin_area`.
 
     ```sql
-    INSERT answer INTO here
+    SELECT countyfp, SUM(area)
+    FROM (
+      SELECT
+        gsas_union.countyfp,
+        ground.*,
+        ST_Area(
+          ST_Intersection(
+              ground.the_geom_webmercator,
+              gsas_union.the_geom_webmercator
+          )
+        ) / 1000000 AS area
+      FROM 
+        i08_b118_ca_groundwaterbasins AS ground, 
+        gsas_union
+      WHERE
+        ST_Intersects(
+          gsas_union.the_geom_webmercator,
+          ground.the_geom_webmercator
+        )
+    ) AS mytable
+    GROUP BY countyfp
     ```
 
     - Join the `gbasin_area` table with the `gsas_union` table on the `countyfp` variable.
