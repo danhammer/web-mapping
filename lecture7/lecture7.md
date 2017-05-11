@@ -80,7 +80,7 @@ The objective of this section is to continue to develop some fluency in SQL quer
 
         ![](http://i.imgur.com/nLVgKlP.png)
 
-- This next step may seem redundant.  And, skills-wise, it is redundant.  But this exercise helped me solidify the data manipulations of the previous sections.  It made me feel like a data wizard.  For this, we will use this [sub-table of California watersheds](https://danhammergenome.cartodb.com/tables/watersheds).
+- This next step may seem redundant.  And, skills-wise, it is redundant.  But this exercise helped me solidify the data manipulations of the previous sections.  It made me feel like a data wizard.  For this, we will use this [sub-table of California watersheds](https://dangeorge.carto.com/dataset/watersheds).
 
     - Add the watersheds to the map, clipped by the county boundaries.  Basically, replicate the following map (note the relevant variable name):
 
